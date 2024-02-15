@@ -1,0 +1,36 @@
+.bg-turquoise {
+    background-color: #000028; /* Turquoise color */
+    color: #fff; /* Text color */
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  
+  .navbar-nav .nav-link {
+    color: #fff;
+  }
+  
+  .navbar-nav .nav-link span {
+    font-weight: bold;
+  }
+  
+  .btn-logout {
+    margin-left: 10px;
+  }
+
+  .text-turquoise {
+    color: #0cc; /* Turquoise color */
+  }
+
+  .btn-custom {
+    background-color: #000028;
+    color: #0cc; /* text color */
+    border-color: #020277; /* border color */
+  }
+  
+  .btn-custom:hover {
+    background-color: white; /* hover color */
+    color: #0cc; /* hover text color */
+    border-color: #000028; /* hover border color */
+  }
