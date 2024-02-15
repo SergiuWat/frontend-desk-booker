@@ -17,6 +17,7 @@ export class LoginComponent {
   invalidCredentialsError:boolean = false;
   passwordVisible!:boolean;
   showWrongCredentials: boolean = false;
+  
   constructor(private formBuilder:FormBuilder,private loginService:LoginService, private router:Router, ){
     this.form = this.formBuilder.group({
       email:['',Validators.required],
