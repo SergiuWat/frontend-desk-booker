@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-2">
+        <div class="taskbar">
+            <div class="taskbar-info">
+              <p>Name: {{employeeName}}</p>
+              <p>Department: {{departmentName}}</p>
+              <!-- Add other information as needed -->
+            </div>
+        </div>
+    </div>
+    <div class="col-9">
+        <div class="row mt-5">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <button class="btn big-button" [disabled]="!disableFloor1Button">Floor 1</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn big-button" [disabled]="!disableFloor2Button">Floor 2</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button class="btn big-button" [disabled]="!disableFloor3Button">Floor 3</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn big-button" [disabled]="!disableFloor4Button">Floor 4</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
