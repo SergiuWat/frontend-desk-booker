@@ -12,6 +12,8 @@ import { HeaderComponent } from './pages/header/header.component';
 import { SendMailComponent } from './pages/send-mail/send-mail.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { EmailSentComponent } from './email-sent/email-sent.component';
+import { SidebarComponent } from './pages/sidebar/sidebar.component';
+import { DepartmentsComponent } from './pages/departments/departments.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { EmailSentComponent } from './email-sent/email-sent.component';
     HeaderComponent,
     SendMailComponent,
     ResetPasswordComponent,
-    EmailSentComponent
+    EmailSentComponent,
+    SidebarComponent,
+    DepartmentsComponent
   ],
   imports: [
     BrowserModule,

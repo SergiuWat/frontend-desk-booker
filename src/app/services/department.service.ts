@@ -14,4 +14,8 @@ export class DepartmentService {
   getFloorsByDepartmentName(name: string): Observable<Department[]> {
     return this.http.get<Department[]>(`${this.baseUrl}/getFloorsByDepartmentName?name=${name}`);
   }
+
+  getDepartmentsByFloorID(floorID: string): Observable<Department[]> {
+    return this.http.get<Department[]>(`${this.baseUrl}/getAllDepartmentsByFloorId/${floorID}`);
+  }
 }

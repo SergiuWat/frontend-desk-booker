@@ -71,4 +71,8 @@ export class HomeComponent {
     });
 
   }
+
+  navigateToDepartments(floorId: number) {
+    this.router.navigate(['/floors', floorId, 'departments']);
+  }
 }
