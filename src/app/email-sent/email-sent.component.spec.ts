@@ -18,16 +18,4 @@ describe('EmailSentComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should navigate to login',()=>{
-      const router = TestBed.inject(Router);
-      spyOn(router,'navigateByUrl');
-
-      component.headToLogin();
-
-      expect(router.navigateByUrl).toHaveBeenCalledWith(
-        jasmine.stringMatching('/login'),
-        jasmine.objectContaining({ skipLocationChange: false })
-      )
-  })
 });

@@ -14,6 +14,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { EmailSentComponent } from './email-sent/email-sent.component';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { DepartmentsComponent } from './pages/departments/departments.component';
+import { BookingsComponent } from './pages/bookings/bookings.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DepartmentsComponent } from './pages/departments/departments.component'
     ResetPasswordComponent,
     EmailSentComponent,
     SidebarComponent,
-    DepartmentsComponent
+    DepartmentsComponent,
+    BookingsComponent
   ],
   imports: [
     BrowserModule,

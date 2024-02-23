@@ -12,3 +12,15 @@
   .taskbar-info {
     margin-bottom: 20px;
   }
+
+  .btn-custom {
+    background-color: #000028;
+    color: #0cc; /* text color */
+    border-color: #020277; /* border color */
+  }
+  
+  .btn-custom:hover {
+    background-color: white; /* hover color */
+    color: #0cc; /* hover text color */
+    border-color: #000028; /* hover border color */
+  }
