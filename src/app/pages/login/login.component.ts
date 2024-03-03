@@ -5,6 +5,7 @@ import { Login } from 'src/app/models/Login';
 import { ActivatedRoute, Router } from '@angular/router'; 
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class LoginComponent {
   passwordVisible!:boolean;
   showWrongCredentials: boolean = false;
   
-  constructor(private formBuilder:FormBuilder,private loginService:LoginService, private router:Router, ){
+  constructor(private formBuilder:FormBuilder,private loginService:LoginService, private router:Router, private snackBar: MatSnackBar){
     this.form = this.formBuilder.group({
       email:['',Validators.required],
       password:['',Validators.required]

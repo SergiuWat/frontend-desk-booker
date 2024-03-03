@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,12 @@ import { EmailSentComponent } from './email-sent/email-sent.component';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { DepartmentsComponent } from './pages/departments/departments.component';
 import { BookingsComponent } from './pages/bookings/bookings.component';
+import { AngularMaterialModule } from './angular-material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -37,8 +43,15 @@ import { BookingsComponent } from './pages/bookings/bookings.component';
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularMaterialModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
