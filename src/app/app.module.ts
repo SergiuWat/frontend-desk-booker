@@ -21,6 +21,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DeskbookingComponent } from './pages/deskbooking/deskbooking.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInput } from '@angular/material/input';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     EmailSentComponent,
     SidebarComponent,
     DepartmentsComponent,
-    BookingsComponent
+    BookingsComponent,
+    DeskbookingComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +53,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSnackBarModule,
     MatSidenavModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

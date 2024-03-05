@@ -34,6 +34,9 @@ export class HeaderComponent {
     });
   }
 
+  goToHome(){
+    this.router.navigate(['/home']);
+  }
   login(){
     this.router.navigate(["login"]).then(()=>{
       window.location.reload();

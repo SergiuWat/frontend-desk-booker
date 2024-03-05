@@ -7,6 +7,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { EmailSentComponent } from './email-sent/email-sent.component';
 import { DepartmentsComponent } from './pages/departments/departments.component';
 import { BookingsComponent } from './pages/bookings/bookings.component';
+import { DeskbookingComponent } from './pages/deskbooking/deskbooking.component';
 
 const routes: Routes = [
   {path:"login", component: LoginComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:"reset-password", component: ResetPasswordComponent},
   {path:"floors/:id/departments", component: DepartmentsComponent},
   {path:"bookings", component: BookingsComponent},
+  {path:"desk-booking", component: DeskbookingComponent},
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Department } from 'src/app/models/Department';
 import { DepartmentService } from 'src/app/services/department.service';
 import { EmployeeService } from 'src/app/services/employee.service';
@@ -17,7 +17,8 @@ export class DepartmentsComponent implements OnInit{
   constructor(
     private route: ActivatedRoute,
     private departmentService: DepartmentService,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +37,14 @@ export class DepartmentsComponent implements OnInit{
 
   isDepartmentEnabled(department: any): boolean {
     return department.departmentName === this.departmentName;
+  }
+
+  goToBooking(){
+    this.router.navigate(['/desk-booking']);
+  }
+
+  goToFloors(){
+    this.router.navigate(['/home']);
   }
 
 }

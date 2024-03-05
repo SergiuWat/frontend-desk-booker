@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Department } from 'src/app/models/Department';
 import { Employee } from 'src/app/models/Employee';
+import { BookingDataService } from 'src/app/services/booking-data.service';
 import { DepartmentService } from 'src/app/services/department.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { LoginService } from 'src/app/services/login.service';
@@ -25,13 +26,14 @@ export class HomeComponent {
   disableFloor3Button: boolean = false;
   disableFloor4Button: boolean = false;
 
-  constructor(private route: ActivatedRoute,private router: Router, private employeeService: EmployeeService, private departmentsService: DepartmentService) {}
+  constructor(private route: ActivatedRoute,private router: Router, private employeeService: EmployeeService, private departmentsService: DepartmentService, private sharedbookingData: BookingDataService) {}
 
   ngOnInit(){
 
     //Colectez informatiile de la employee folosind token-ul
     this.employeeService.getEmployeeInfo().subscribe(response => {
       this.employee = response;
+      this.sharedbookingData.bookingData.employeeId = this.employee.id;
       this.employeeName = this.employee.fullName;
       this.departmentName = this.employee.department.departmentName;
       this.showLogout=true;
