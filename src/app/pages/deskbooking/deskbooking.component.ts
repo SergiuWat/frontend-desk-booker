@@ -19,7 +19,7 @@ export class DeskbookingComponent implements OnInit{
   departmentId: number;
   isVisible: boolean = false;
   desks: Desk[];
-  isDeskBookedMap: Map<number, Observable<boolean>> = new Map<number, Observable<boolean>>();
+  isDeskBookedMap: Map<number, boolean> = new Map<number, boolean>();
 
   constructor(private route: ActivatedRoute,
               private datePipe: DatePipe, 
@@ -46,8 +46,15 @@ export class DeskbookingComponent implements OnInit{
       this.sharedBookingData.bookingData.bookedDay = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
       this.deskService.getAllDesksByDepartmentId(this.departmentId).subscribe(data => {
         this.desks = data;
-        this.desks.forEach(desk => {
-          this.isDeskBookedMap.set(desk.id, this.isDeskBooked(desk));
+        this.bookingService.getAllBookedDesksByDay(this.sharedBookingData.bookingData.bookedDay).subscribe(bookings =>{
+          this.desks.forEach(desk =>{
+            var obj = bookings.find((booking) => (booking.deskId === desk.id && this.datePipe.transform(booking.bookedDay, 'yyyy-MM-dd') == this.sharedBookingData.bookingData.bookedDay))
+            if(obj != undefined){
+              this.isDeskBookedMap.set(desk.id, true);
+            } else {
+              this.isDeskBookedMap.set(desk.id, false);
+            }
+          })
         });
         this.isVisible = true;
       });
@@ -61,8 +68,8 @@ export class DeskbookingComponent implements OnInit{
     return this.bookingService.isDeskBooked(desk.id, this.sharedBookingData.bookingData.bookedDay);
   }
 
-  checkDeskAvailability(deskId: number): Observable<boolean> {
-    return this.isDeskBookedMap.get(deskId) || of(false);
+  checkDeskAvailability(deskId: number): boolean {
+    return this.isDeskBookedMap.get(deskId) || false;
   }
 
 }
