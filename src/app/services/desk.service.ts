@@ -14,4 +14,9 @@ export class DeskService {
   getDeskById(deskID: string): Observable<Desk> {
     return this.http.get<Desk>(`${this.baseUrl}/getDeskById/${deskID}`);
   }
+
+  getAllDesksByDepartmentId(departmentId: number): Observable<Desk[]>{
+    return this.http.get<Desk[]>(`${this.baseUrl}/getAllDesksByDepartmentId/${departmentId}`);
+    
+  }
 }

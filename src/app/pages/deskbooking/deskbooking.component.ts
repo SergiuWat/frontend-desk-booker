@@ -1,19 +1,40 @@
 import { DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, map, of } from 'rxjs';
+import { Desk } from 'src/app/models/Desk';
 import { BookingDataService } from 'src/app/services/booking-data.service';
+import { BookingService } from 'src/app/services/booking.service';
+import { DeskService } from 'src/app/services/desk.service';
 
 @Component({
   selector: 'app-deskbooking',
   templateUrl: './deskbooking.component.html',
   styleUrls: ['./deskbooking.component.css']
 })
-export class DeskbookingComponent {
+export class DeskbookingComponent implements OnInit{
 
   selectedDate: Date;
+  departmentId: number;
+  isVisible: boolean = false;
+  desks: Desk[];
+  isDeskBookedMap: Map<number, Observable<boolean>> = new Map<number, Observable<boolean>>();
 
-  constructor(private datePipe: DatePipe, private sharedBookingData: BookingDataService, private snackBar: MatSnackBar){
+  constructor(private route: ActivatedRoute,
+              private datePipe: DatePipe, 
+              private sharedBookingData: BookingDataService, 
+              private snackBar: MatSnackBar,
+              private bookingService: BookingService,
+              private deskService: DeskService){
     
+  }
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.departmentId = +params['id'];
+    });
+    this.isVisible = false;
   }
 
   handleSelectedDate() {
@@ -23,12 +44,25 @@ export class DeskbookingComponent {
 
     if (this.selectedDate >= currentDate) {
       this.sharedBookingData.bookingData.bookedDay = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
-      console.log(this.sharedBookingData.bookingData)
+      this.deskService.getAllDesksByDepartmentId(this.departmentId).subscribe(data => {
+        this.desks = data;
+        this.desks.forEach(desk => {
+          this.isDeskBookedMap.set(desk.id, this.isDeskBooked(desk));
+        });
+        this.isVisible = true;
+      });
     } else {
+      this.isVisible = false;
       this.snackBar.open('Please select a valid date', 'Close', {duration:3000})
     }
+  }
 
-    
+  isDeskBooked(desk: Desk): Observable<boolean> {
+    return this.bookingService.isDeskBooked(desk.id, this.sharedBookingData.bookingData.bookedDay);
+  }
+
+  checkDeskAvailability(deskId: number): Observable<boolean> {
+    return this.isDeskBookedMap.get(deskId) || of(false);
   }
 
 }

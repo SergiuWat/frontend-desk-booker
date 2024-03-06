@@ -11,5 +11,15 @@
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+
+        <div class="row mt-5" *ngIf="isVisible">
+            <div class="col">
+                <div class="row">
+                    <div class="col" *ngFor="let desk of desks">
+                        <button class="btn big-button" [disabled]="checkDeskAvailability(desk.id) | async">{{ desk.deskNumber }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
       </div>    
 </div>

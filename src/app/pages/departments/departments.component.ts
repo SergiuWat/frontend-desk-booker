@@ -39,8 +39,8 @@ export class DepartmentsComponent implements OnInit{
     return department.departmentName === this.departmentName;
   }
 
-  goToBooking(){
-    this.router.navigate(['/desk-booking']);
+  goToBooking(departmentId: number){
+    this.router.navigate(['/desk-booking/', departmentId]);
   }
 
   goToFloors(){

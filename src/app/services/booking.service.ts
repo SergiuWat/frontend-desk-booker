@@ -13,4 +13,10 @@ export class BookingService {
   getAllBookingsByEmployeeEmail(employeeEmail: string): Observable<Booking[]> {
     return this.http.get<Booking[]>(`${this.baseUrl}/getBookingByEmployeeEmail/${employeeEmail}`);
   }
+
+  isDeskBooked(deskID: number, wantedDate: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.baseUrl}/isDeskBooked?deskID=${deskID}&wantedDate=${wantedDate}`);
+  }
+
+
 }

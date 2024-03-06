@@ -17,7 +17,7 @@ const routes: Routes = [
   {path:"reset-password", component: ResetPasswordComponent},
   {path:"floors/:id/departments", component: DepartmentsComponent},
   {path:"bookings", component: BookingsComponent},
-  {path:"desk-booking", component: DeskbookingComponent},
+  {path:"desk-booking/:id", component: DeskbookingComponent},
 ];
 
 @NgModule({

@@ -8,3 +8,21 @@
     margin-top: 10px;
     margin-bottom: 20px;
 }
+
+.big-button {
+    display: block;
+    width: 100px;
+    height: 50px;
+    margin-bottom: 20px;
+    background-color: #0cc;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    
+  }
+
+  .big-button:not([disabled]):hover {
+    background-color: #050577; 
+    cursor: pointer;
+    color: white;
+  }
