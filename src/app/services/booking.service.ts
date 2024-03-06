@@ -18,5 +18,9 @@ export class BookingService {
     return this.http.get<boolean>(`${this.baseUrl}/isDeskBooked?deskID=${deskID}&wantedDate=${wantedDate}`);
   }
 
+  getAllBookedDesksByDay(wantedDate: string): Observable<Booking[]> {
+    return this.http.get<Booking[]>(`${this.baseUrl}/getAllBookedDesksByDay?wantedDate=${wantedDate}`);
+  }
+
 
 }
