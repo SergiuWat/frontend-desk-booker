@@ -1,11 +1,11 @@
+import { Department } from "./Department";
 import { Desk } from "./Desk";
-import { Employee } from "./Employee";
 
-export class Booking{
+export class Booking {
     id: number;
     employeeId: number;
-    employee: Employee;
     deskId: number;
+    bookedDay: string;
     desk: Desk;
-    bookedDay: Date;
+    department: Department;
 }

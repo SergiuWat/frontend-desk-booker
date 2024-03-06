@@ -1,0 +1,26 @@
+.taskbar {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    height: 100vh;
+    width: 250px; /* Adjust width as needed */
+    background-color: #000028;
+    color: white;
+    padding: 20px;
+  }
+  
+  .taskbar-info {
+    margin-bottom: 20px;
+  }
+
+  .btn-custom {
+    background-color: #000028;
+    color: #0cc; /* text color */
+    border-color: #020277; /* border color */
+  }
+  
+  .btn-custom:hover {
+    background-color: white; /* hover color */
+    color: #0cc; /* hover text color */
+    border-color: #000028; /* hover border color */
+  }

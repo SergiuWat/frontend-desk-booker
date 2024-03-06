@@ -24,3 +24,14 @@
     cursor: pointer;
     color: white;
   }
+
+  .btnBack {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #0cc;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    
+  }

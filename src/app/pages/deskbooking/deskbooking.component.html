@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-2">
+        <app-sidebar></app-sidebar> 
+    </div>
+    <div class="datepicker-container">
+        <h4 class="title">Please choose a day:</h4>
+        <mat-form-field>
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" (dateChange)="handleSelectedDate()">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <div class="row mt-5" *ngIf="isVisible">
+            <div class="col">
+                <div class="row">
+                    <div class="col" *ngFor="let desk of desks">
+                        <button class="btn big-button" [disabled]="checkDeskAvailability(desk.id)">{{ desk.deskNumber }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>    
+</div>
