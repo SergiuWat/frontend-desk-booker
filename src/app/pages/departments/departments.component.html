@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-2">
+        <app-sidebar></app-sidebar> 
+    </div>
+    <div class="col-9">
+        <button class="btnBack" (click)="goToFloors()">Back</button>
+        <div class="row mt-5">
+            <div class="col">
+                <div class="row">
+                    <div class="col" *ngFor="let department of departments">
+                        <button class="btn big-button" [disabled]="!isDepartmentEnabled(department)" (click)="goToBooking(department.id)">{{ department.departmentName }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

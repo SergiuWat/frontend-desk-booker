@@ -1,0 +1,119 @@
+.login-container{
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.login-form-container{
+    width: 50%;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #fff; 
+    position: relative;
+    top:100px;
+    padding:10px;
+    height: 350px;
+}
+
+.example-full-width{
+    margin-left:20%;
+    margin-top:20px;
+    width: 60%;
+    padding:10px;
+    font-size: 1.4rem;
+}
+
+.login-container-title{
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.login-btn{
+    padding-left: 55px;
+    padding-right: 55px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 1.5rem;
+    border:none;
+    border-radius: 5px;
+    color:#fff;
+    background-color: blue;
+}
+
+.login-btn:hover{
+    cursor: pointer;
+    background-color: rgb(56, 56, 255);
+}
+
+.login-btn-container{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.error-msg-container{
+    text-align: center;
+}
+
+.error-msg{
+    color:red;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.login-btn:disabled{
+    background-color: rgb(148, 148, 255);
+    cursor: auto;
+}
+
+.login-container-footer{
+    margin-top:40px;
+    text-align: center;
+}
+
+.invalid-credentials{
+    padding:5px;
+    background-color: rgb(255, 217, 217);
+    border: 1px solid red;
+    border-radius: 5px;
+    width: 400px;
+    text-align: center;
+    font-size: 1.2rem;
+    color:red;
+    margin: auto;
+}
+
+.show-pass-btn{
+    position: relative;
+    background-color: #fff;
+    border: none;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 1.3rem;
+    bottom: 10px;
+}
+
+.email-sent-text-container{
+    padding: 70px 0;
+    text-align: center;
+}
+
+.head-to-login-btn{
+    position: relative;
+    top: 20px;
+    padding-left: 55px;
+    padding-right: 55px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 1.5rem;
+    border:none;
+    border-radius: 5px;
+    color:#fff;
+    background-color: blue;
+}
+
+.head-to-login-btn:hover{
+    cursor: pointer;
+    background-color: rgb(56, 56, 255);
+}

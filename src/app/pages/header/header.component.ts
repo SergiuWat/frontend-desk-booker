@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Employee } from 'src/app/models/Employee';
 import { EmployeeService } from 'src/app/services/employee.service';
@@ -33,6 +34,9 @@ export class HeaderComponent {
     });
   }
 
+  goToHome(){
+    this.router.navigate(['/home']);
+  }
   login(){
     this.router.navigate(["login"]).then(()=>{
       window.location.reload();
