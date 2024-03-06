@@ -8,6 +8,8 @@ import { EmailSentComponent } from './email-sent/email-sent.component';
 import { DepartmentsComponent } from './pages/departments/departments.component';
 import { BookingsComponent } from './pages/bookings/bookings.component';
 import { DeskbookingComponent } from './pages/deskbooking/deskbooking.component';
+import { WaitinglistComponent } from './pages/waitinglist/waitinglist.component';
+
 
 const routes: Routes = [
   {path:"login", component: LoginComponent},
@@ -18,6 +20,7 @@ const routes: Routes = [
   {path:"floors/:id/departments", component: DepartmentsComponent},
   {path:"bookings", component: BookingsComponent},
   {path:"desk-booking/:id", component: DeskbookingComponent},
+  {path: "waitinglist", component: WaitinglistComponent}
 ];
 
 @NgModule({
