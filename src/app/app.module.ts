@@ -25,6 +25,7 @@ import { DeskbookingComponent } from './pages/deskbooking/deskbooking.component'
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInput } from '@angular/material/input';
 import { DatePipe } from '@angular/common';
+import { WaitinglistComponent } from './pages/waitinglist/waitinglist.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { DatePipe } from '@angular/common';
     DepartmentsComponent,
     BookingsComponent,
     DeskbookingComponent
+    WaitinglistComponent
   ],
   imports: [
     BrowserModule,
