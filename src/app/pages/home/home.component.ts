@@ -37,9 +37,6 @@ export class HomeComponent {
       this.employeeName = this.employee.fullName;
       this.departmentName = this.employee.department.departmentName;
       this.showLogout=true;
-      var empNameHeader = document.getElementById('employeeNameHeader');
-      empNameHeader.innerText = ", " + this.employeeName.split(" ").at(0);
-
       // Colectez o lista de etaje disponibile pentru departamentul respectiv     
       this.departmentsService.getFloorsByDepartmentName(this.departmentName).subscribe(response => {
         this.departments = response;
@@ -75,6 +72,6 @@ export class HomeComponent {
   }
 
   navigateToDepartments(floorId: number) {
-    this.router.navigate(['/floors', floorId, 'departments']);
+    this.router.navigate(['/desk-booking', this.employee.department.id]);
   }
 }

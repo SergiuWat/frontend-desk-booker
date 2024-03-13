@@ -39,7 +39,7 @@ import { WaitinglistComponent } from './pages/waitinglist/waitinglist.component'
     SidebarComponent,
     DepartmentsComponent,
     BookingsComponent,
-    DeskbookingComponent
+    DeskbookingComponent,
     WaitinglistComponent
   ],
   imports: [

@@ -22,7 +22,7 @@ export class HeaderComponent {
       this.showHello = true;
       this.showLogout = true;
       this.employee = response;
-      this.employeeName = this.employee.fullName.split(' ').at(0);
+      this.employeeName = response.fullName.split(' ').at(0);
     });
   }
 
