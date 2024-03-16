@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Booking } from '../models/Booking';
 import { Observable } from 'rxjs';
+import { BookingDataService } from './booking-data.service';
+import { BookingData } from '../models/BookingData';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +24,9 @@ export class BookingService {
     return this.http.get<Booking[]>(`${this.baseUrl}/getAllBookedDesksByDay?wantedDate=${wantedDate}`);
   }
 
+  addBooking(bookingData: BookingData): Observable<any>{ 
+    console.log(bookingData);  
+    return this.http.post<any>(`${this.baseUrl}/addBooking`, bookingData);
+  }
 
 }

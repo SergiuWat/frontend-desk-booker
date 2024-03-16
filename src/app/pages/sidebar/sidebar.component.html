@@ -1,9 +1,18 @@
 <div class="col-2">
-    <div class="taskbar">
-        <div class="taskbar-info">
-          <p>Name: {{employeeName}}</p>
-          <p>Department: {{departmentName}}</p>
-        </div>
-        <button class="btn btn-custom"  (click)="goToBookings()">My Bookings</button>
-    </div>
+<div class="taskbar" >
+    <img [src]="sanitizedImageData" style="height: 200px; width: 200px;" />
+      <div class="taskbar-info">
+        <p>Name: {{employeeName}}</p>
+        <p>Department: {{departmentName}}</p>
+        <p>Team: {{teamName}}</p>
+        <p>Role: {{rolName}}</p>
+        <p>Email: {{employeeEmail}}</p>
+        <p>Contact: {{contactNumber}}</p>
+      </div>
+      <button class="btn btn-custom" (click)="goToBookings()">My Bookings</button>
+      <div style="padding-top: 10px;">
+        <button class="btn btn-custom" >My history</button>
+      </div>
+    
+  </div>
 </div>

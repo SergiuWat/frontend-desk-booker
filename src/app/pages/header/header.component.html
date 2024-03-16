@@ -6,7 +6,7 @@
             <span style="font-size: x-large;" (click)="goToHome()">Siemens</span>
         </div>
         <div class="col-4 d-flex">
-          <a class="nav-link text-turquoise mr-3" *ngIf="showHello">Hello<span id="employeeNameHeader"></span></a>
+          <a class="nav-link text-turquoise mr-3" *ngIf="showHello">Hello, {{employeeName}}</a>
           <button class="btn btn-custom" *ngIf="showLogout" (click)="logout()">Logout</button>
           <button class="btn btn-custom" *ngIf="!showLogout" (click)="login()">Login</button>
         </div>

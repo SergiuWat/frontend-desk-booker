@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ImageUploadService } from 'src/app/services/image-upload.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class LoginComponent {
   passwordVisible!:boolean;
   showWrongCredentials: boolean = false;
   
-  constructor(private formBuilder:FormBuilder,private loginService:LoginService, private router:Router, private snackBar: MatSnackBar){
+  constructor(private formBuilder:FormBuilder,private loginService:LoginService, private router:Router, private snackBar: MatSnackBar,private imageUploadSerice: ImageUploadService){
     this.form = this.formBuilder.group({
       email:['',Validators.required],
       password:['',Validators.required]
@@ -27,7 +28,7 @@ export class LoginComponent {
   } 
 
   ngOnInit(){
-
+    this.imageUploadSerice.uploadImage("C:\\Users\\dago\\Desktop\\desk-booker-siemens\\frontend\\frontend-desk-booker\\src\\assets\\default_user_image.png");
 
   }
   signin(loginForm: NgForm){
