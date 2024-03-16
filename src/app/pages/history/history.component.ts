@@ -17,6 +17,7 @@ export class HistoryComponent implements AfterViewInit{
   constructor(private bookingService: BookingService, private employeeService: EmployeeService, private deskService: DeskService, private departmentService: DepartmentService){
 
   }
+  
   ngAfterViewInit(): void {
     this.employeeService.getEmployeeInfo().subscribe(response => {
       this.employeeEmail = response.email;
@@ -38,4 +39,5 @@ export class HistoryComponent implements AfterViewInit{
       });
     });
   }
+
 }

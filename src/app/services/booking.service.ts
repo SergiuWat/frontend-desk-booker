@@ -33,8 +33,11 @@ export class BookingService {
   }
 
   addBooking(bookingData: BookingData): Observable<any>{ 
-    console.log(bookingData);  
     return this.http.post<any>(`${this.baseUrl}/addBooking`, bookingData);
+  }
+
+  cancelBooking(id: number): Observable<any>{
+    return this.http.delete<any>(`${this.baseUrl}/deleteBooking/${id}`);
   }
 
 }
