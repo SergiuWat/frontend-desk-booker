@@ -49,4 +49,8 @@ export class SidebarComponent {
   goToBookings(){
     this.router.navigate(['bookings']);
   }
+
+  goToHistory(){
+    this.router.navigate(['history']);
+  }
 }

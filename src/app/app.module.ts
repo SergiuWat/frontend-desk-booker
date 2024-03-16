@@ -26,6 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInput } from '@angular/material/input';
 import { DatePipe } from '@angular/common';
 import { WaitinglistComponent } from './pages/waitinglist/waitinglist.component';
+import { HistoryComponent } from './pages/history/history.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { WaitinglistComponent } from './pages/waitinglist/waitinglist.component'
     DepartmentsComponent,
     BookingsComponent,
     DeskbookingComponent,
-    WaitinglistComponent
+    WaitinglistComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,

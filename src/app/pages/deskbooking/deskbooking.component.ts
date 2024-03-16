@@ -48,7 +48,6 @@ export class DeskbookingComponent implements OnInit{
     if (this.selectedDate >= currentDate) {
       this.sharedBookingData.bookingData.bookedDay = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
       this.bookingDataService.bookingData.bookedDay= this.sharedBookingData.bookingData.bookedDay;
-      console.log(this.bookingDataService.bookingData);
       this.updateDeks();
     } else {
       this.isVisible = false;

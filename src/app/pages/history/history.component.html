@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-2">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-9">
+        <div class="user-bookings">
+            <h2>Your Booking History</h2>
+            <div class="table-container">
+                <div class="table-row header">
+                    <div class="table-cell">Desk Number</div>
+                    <div class="table-cell">Floor Number</div>
+                    <div class="table-cell">Department Name</div>
+                    <div class="table-cell">Booked Day</div>
+                </div>
+                <div class="table-body">
+                    <div *ngFor="let booking of bookings" class="table-row">
+                        <div class="table-cell">{{ booking.desk.deskNumber }}</div>
+                        <div class="table-cell">{{ booking.department.floor.floorLevel }}</div>
+                        <div class="table-cell">{{ booking.department.departmentName }}</div>
+                        <div class="table-cell">{{ booking.bookedDay }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,7 +13,15 @@ export class BookingService {
   constructor(private http: HttpClient) { }
 
   getAllBookingsByEmployeeEmail(employeeEmail: string): Observable<Booking[]> {
-    return this.http.get<Booking[]>(`${this.baseUrl}/getBookingByEmployeeEmail/${employeeEmail}`);
+    return this.http.get<Booking[]>(`${this.baseUrl}/getAllBookingsByEmployeeEmail/${employeeEmail}`);
+  }
+
+  getActiveBookingsByEmployeeEmail(employeeEmail: string): Observable<Booking[]> {
+    return this.http.get<Booking[]>(`${this.baseUrl}/getActiveBookingsByEmployeeEmail/${employeeEmail}`);
+  }
+
+  getBookingHistoryByEmployeeEmail(employeeEmail: string): Observable<Booking[]> {
+    return this.http.get<Booking[]>(`${this.baseUrl}/getBookingHistoryByEmployeeEmail/${employeeEmail}`);
   }
 
   isDeskBooked(deskID: number, wantedDate: string): Observable<boolean> {
