@@ -27,6 +27,7 @@ import { MatInput } from '@angular/material/input';
 import { DatePipe } from '@angular/common';
 import { WaitinglistComponent } from './pages/waitinglist/waitinglist.component';
 import { HistoryComponent } from './pages/history/history.component';
+import { SeatsComponent } from './pages/seats/seats.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { HistoryComponent } from './pages/history/history.component';
     DeskbookingComponent,
     WaitinglistComponent,
     HistoryComponent,
+    SeatsComponent,
   ],
   imports: [
     BrowserModule,
