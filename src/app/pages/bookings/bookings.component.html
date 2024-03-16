@@ -13,7 +13,8 @@
                     <div class="table-cell">Desk Number</div>
                     <div class="table-cell">Floor Number</div>
                     <div class="table-cell">Department Name</div>
-                    <div class="table-cell">Booked Day</div>
+                    <div class="table-cell">Start Day</div>
+                    <div class="table-cell">End Day</div>
                     <div class="table-cell">Cancel Booking</div>
                 </div>
                 <div class="table-body">
@@ -21,7 +22,8 @@
                         <div class="table-cell">{{ booking.desk.deskNumber }}</div>
                         <div class="table-cell">{{ booking.department.floor.floorLevel }}</div>
                         <div class="table-cell">{{ booking.department.departmentName }}</div>
-                        <div class="table-cell">{{ booking.bookedDay }}</div>
+                        <div class="table-cell">{{ booking.startDate }}</div>
+                        <div class="table-cell">{{ booking.endDate }}</div>
                         <div class="table-cell">
                             <input type="checkbox" name="selectedBookings" (change)="toggleSelection($event.target.checked, booking)">
                         </div>

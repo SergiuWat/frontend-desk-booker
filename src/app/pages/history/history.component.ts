@@ -26,7 +26,8 @@ export class HistoryComponent implements AfterViewInit{
         this.bookings = bookings;
 
         this.bookings.forEach(booking => {
-          booking.bookedDay = booking.bookedDay.split('T')[0];
+          booking.startDate = booking.startDate.split('T')[0];
+          booking.endDate = booking.endDate.split('T')[0];
           
           this.deskService.getDeskById(booking.deskId.toString()).subscribe(desk => {
             booking.desk = desk;

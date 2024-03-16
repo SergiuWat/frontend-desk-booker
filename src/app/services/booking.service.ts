@@ -24,12 +24,12 @@ export class BookingService {
     return this.http.get<Booking[]>(`${this.baseUrl}/getBookingHistoryByEmployeeEmail/${employeeEmail}`);
   }
 
-  isDeskBooked(deskID: number, wantedDate: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.baseUrl}/isDeskBooked?deskID=${deskID}&wantedDate=${wantedDate}`);
+  isDeskBooked(deskID: number, wantedstartDate: string, wantedendDate): Observable<boolean> {
+    return this.http.get<boolean>(`${this.baseUrl}/isDeskBooked?deskID=${deskID}&wantedstartDate=${wantedstartDate}&wantedendDate=${wantedendDate}`);
   }
 
-  getAllBookedDesksByDay(wantedDate: string): Observable<Booking[]> {
-    return this.http.get<Booking[]>(`${this.baseUrl}/getAllBookedDesksByDay?wantedDate=${wantedDate}`);
+  getAllBookedDesksByDay( wantedstartDate: string, wantedendDate): Observable<Booking[]> {
+    return this.http.get<Booking[]>(`${this.baseUrl}/getAllBookedDesksByDay?wantedstartDate=${wantedstartDate}&wantedendDate=${wantedendDate}`);
   }
 
   addBooking(bookingData: BookingData): Observable<any>{ 

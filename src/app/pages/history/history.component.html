@@ -10,14 +10,16 @@
                     <div class="table-cell">Desk Number</div>
                     <div class="table-cell">Floor Number</div>
                     <div class="table-cell">Department Name</div>
-                    <div class="table-cell">Booked Day</div>
+                    <div class="table-cell">Start Day</div>
+                    <div class="table-cell">End Day</div>
                 </div>
                 <div class="table-body">
                     <div *ngFor="let booking of bookings" class="table-row">
                         <div class="table-cell">{{ booking.desk.deskNumber }}</div>
                         <div class="table-cell">{{ booking.department.floor.floorLevel }}</div>
                         <div class="table-cell">{{ booking.department.departmentName }}</div>
-                        <div class="table-cell">{{ booking.bookedDay }}</div>
+                        <div class="table-cell">{{ booking.startDate }}</div>
+                        <div class="table-cell">{{ booking.endDate }}</div>
                     </div>
                 </div>
             </div>
