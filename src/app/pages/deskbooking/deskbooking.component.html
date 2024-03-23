@@ -41,8 +41,9 @@
                 <div class="row">
                     <div class="col" *ngFor="let desk of desks">
                         <button class="btn big-button" [disabled]="checkDeskAvailability(desk.id)" (click)="addBooking(desk.id)">{{ desk.deskNumber }}</button>
-                        <!--<app-seats [value]="desk.id" (click)="addBooking(desk.id)"></app-seats>--> 
+                        
                     </div>
+                    <!--<app-seats [value]="desk.id" (click)="addBooking(desk.id)"></app-seats>-->
                 </div>
             </div>
         </div> 

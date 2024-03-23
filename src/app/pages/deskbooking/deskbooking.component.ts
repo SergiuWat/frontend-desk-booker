@@ -68,9 +68,8 @@ export class DeskbookingComponent implements OnInit{
     if (this.startDate && this.startDate >= currentDate) {
         this.sharedBookingData.bookingData.startDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd');
         this.bookingDataService.bookingData.startDate = this.sharedBookingData.bookingData.startDate;
-        this.updateDesks();
+        //this.updateDesks();
     } else {
-        this.isVisible = false;
         this.snackBar.open('Please select a valid start date', 'Close', { duration: 3000 });
     }
 }
