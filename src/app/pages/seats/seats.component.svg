@@ -95,7 +95,7 @@
     <line y2="202.5" transform="translate(748.5 350)" />
   </g>
 
-  <g class="seat"
+  <g class="seat" id="seat-1"
   [class.selected]="isVisible && isSelected('seat-1')"
   (click)="select('seat-1')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -119,7 +119,7 @@
     </g>
   </g>
 
-  <g class="seat" 
+  <g class="seat" id="seat-2"
   [class.selected]="isVisible && isSelected('seat-2')"
   (click)="select('seat-2')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -142,7 +142,7 @@
     </g>
   </g>
 
-  <g class="seat" 
+  <g class="seat" id="seat-3"
   [class.selected]="isVisible && isSelected('seat-3')"
   (click)="select('seat-3')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -165,7 +165,7 @@
     </g>
   </g>
 
-  <g class="seat" 
+  <g class="seat" id="seat-4"
   [class.selected]="isVisible && isSelected('seat-4')"
   (click)="select('seat-4')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -193,7 +193,7 @@
 
   
 
-  <g class="seat" 
+  <g class="seat" id="seat-5"
   [class.selected]="isVisible && isSelected('seat-5')"
   (click)="select('seat-5')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -218,7 +218,7 @@
 
   
 
-  <g class="seat" 
+  <g class="seat" id="seat-6"
   [class.selected]="isVisible && isSelected('seat-6')"
   (click)="select('seat-6')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -241,7 +241,7 @@
     </g>
   </g>
 
-  <g class="seat" 
+  <g class="seat" id="seat-7" 
   [class.selected]="isVisible && isSelected('seat-7')"
   (click)="select('seat-7')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -264,7 +264,7 @@
     </g>
   </g>
 
-  <g class="seat" 
+  <g class="seat" id="seat-8" 
   [class.selected]="isVisible && isSelected('seat-8')"
   (click)="select('seat-8')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -287,7 +287,7 @@
     </g>
   </g>
 
-  <g class="seat" 
+  <g class="seat" id="seat-9" 
   [class.selected]="isVisible && isSelected('seat-9')"
   (click)="select('seat-9')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -310,7 +310,7 @@
     </g>
   </g>
 
-  <g class="seat" 
+  <g class="seat" id="seat-10"
   [class.selected]="isVisible && isSelected('seat-10')"
   (click)="select('seat-10')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -333,7 +333,7 @@
     </g>
   </g>
 
-  <g class="seat"
+  <g class="seat" id="seat-11"
   [class.selected]="isVisible && isSelected('seat-11')"
   (click)="select('seat-11')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -357,7 +357,7 @@
     </g>
   </g>
 
-  <g class="seat" 
+  <g class="seat" id="seat-12"
   [class.selected]="isVisible && isSelected('seat-12')"
   (click)="select('seat-12')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -380,7 +380,7 @@
     </g>
 </g>
 
-<g class="seat" 
+<g class="seat" id="seat-13"
   [class.selected]="isVisible && isSelected('seat-13')"
   (click)="select('seat-13')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -403,7 +403,7 @@
     </g>
 </g>
 
-<g class="seat" 
+<g class="seat" id="seat-14"
   [class.selected]="isVisible && isSelected('seat-14')"
   (click)="select('seat-14')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -426,7 +426,7 @@
     </g>
   </g>
 
-  <g class="seat" 
+  <g class="seat" id="seat-15"
   [class.selected]="isVisible && isSelected('seat-15')"
   (click)="select('seat-15')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -449,7 +449,7 @@
     </g>
 </g>
 
-<g class="seat" 
+<g class="seat" id="seat-16"
   [class.selected]="isVisible && isSelected('seat-16')"
   (click)="select('seat-16')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -472,7 +472,7 @@
     </g>
 </g>
 
-<g class="seat" 
+<g class="seat" id="seat-17"
   [class.selected]="isVisible && isSelected('seat-17')"
   (click)="select('seat-17')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -495,7 +495,7 @@
     </g>
 </g>
 
-<g class="seat" 
+<g class="seat" id="seat-18"
   [class.selected]="isVisible && isSelected('seat-18')"
   (click)="select('seat-18')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -518,7 +518,7 @@
     </g>
 </g>
 
-<g class="seat" 
+<g class="seat" id="seat-19"
   [class.selected]="isVisible && isSelected('seat-19')"
   (click)="select('seat-19')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -541,7 +541,7 @@
     </g>
 </g>
 
-<g class="seat" 
+<g class="seat" id="seat-20"
   [class.selected]="isVisible && isSelected('seat-20')"
   (click)="select('seat-20')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -564,7 +564,7 @@
     </g>
 </g>
 
-<g class="seat" 
+<g class="seat" id="seat-21"
   [class.selected]="isVisible && isSelected('seat-21')"
   (click)="select('seat-21')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -587,7 +587,7 @@
     </g>
 </g>
 
-<g class="seat" 
+<g class="seat" id="seat-22"
   [class.selected]="isVisible && isSelected('seat-22')"
   (click)="select('seat-22')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -610,7 +610,7 @@
     </g>
 </g>
 
-<g class="seat" 
+<g class="seat" id="seat-23"
   [class.selected]="isVisible && isSelected('seat-23')"
   (click)="select('seat-23')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -633,7 +633,7 @@
     </g>
 </g>
 
-<g class="seat" 
+<g class="seat" id="seat-24"
   [class.selected]="isVisible && isSelected('seat-24')"
   (click)="select('seat-24')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -656,7 +656,7 @@
     </g>
 </g>
 
-<g class="seat" 
+<g class="seat" id="seat-25"
   [class.selected]="isVisible && isSelected('seat-25')"
   (click)="select('seat-25')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
@@ -679,7 +679,7 @@
     </g>
 </g>
 
-<g class="seat" 
+<g class="seat" id="seat-26"
   [class.selected]="isVisible && isSelected('seat-26')"
   (click)="select('seat-26')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"

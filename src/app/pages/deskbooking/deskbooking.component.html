@@ -36,17 +36,7 @@
                 <mat-datepicker #endPicker></mat-datepicker>
             </mat-form-field>
         </div>
-        <app-seats [isVisible]="isVisible"></app-seats>
-        <div class="row mt-5" *ngIf="isVisible">
-            <div class="col">
-                <div class="row">
-                    <div class="col" *ngFor="let desk of desks">
-                        <!--<button class="btn big-button" [disabled]="checkDeskAvailability(desk.id)" (click)="addBooking(desk.id)">{{ desk.deskNumber }}</button>-->
-                    </div>
-                    
-                    <!--<app-seats [value]="desk.id" (click)="addBooking(desk.id)"></app-seats>-->
-                </div>
-            </div>
-        </div> 
+        
+        <app-seats [desks]="desks" [isVisible]="isVisible"></app-seats>
     </div>
 </div>

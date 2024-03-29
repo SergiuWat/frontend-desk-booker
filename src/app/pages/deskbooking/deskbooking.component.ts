@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map, of } from 'rxjs';
@@ -22,7 +22,6 @@ export class DeskbookingComponent implements OnInit{
   departmentId: number;
   isVisible: boolean = false;
   desks: Desk[];
-  isDeskBookedMap: Map<number, boolean> = new Map<number, boolean>();
   bookingType: string = 'oneDay'; // Default to 'oneDay'
 
   constructor(private route: ActivatedRoute,
@@ -47,7 +46,7 @@ export class DeskbookingComponent implements OnInit{
 
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
-
+    this.isVisible = true;
     if (this.selectedDate >= currentDate) {
       this.sharedBookingData.bookingData.startDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
       this.sharedBookingData.bookingData.endDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
@@ -99,10 +98,6 @@ handleEndDate() {
 }
 
 
-  checkDeskAvailability(deskId: number): boolean {
-    return this.isDeskBookedMap.get(deskId) || false;
-  }
-
   async addBooking(deskId:number){
     var response = await this.employeeService.getEmployeeInfo().toPromise()
     this.bookingDataService.bookingData.employeeId=response.id;
@@ -115,16 +110,6 @@ handleEndDate() {
     updateDesks(){
         this.deskService.getAllDesksByDepartmentId(this.departmentId).subscribe(data => {
           this.desks = data;
-          this.bookingService.getAllBookedDesksByDay(this.sharedBookingData.bookingData.startDate, this.sharedBookingData.bookingData.endDate).subscribe(bookings =>{
-            this.desks.forEach(desk =>{
-              var obj = bookings.find((booking) => (booking.deskId === desk.id && ( this.datePipe.transform(booking.startDate, 'yyyy-MM-dd') <= this.sharedBookingData.bookingData.endDate ) && ( this.datePipe.transform(booking.endDate, 'yyyy-MM-dd') >= this.sharedBookingData.bookingData.startDate ) && ( this.datePipe.transform(booking.startDate))))
-              if(obj != undefined){
-                this.isDeskBookedMap.set(desk.id, true);
-              } else {
-                this.isDeskBookedMap.set(desk.id, false);
-              }
-            })
-          });
           this.isVisible = true;
         });
   }
