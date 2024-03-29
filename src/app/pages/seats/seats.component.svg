@@ -96,16 +96,16 @@
   </g>
 
   <g class="seat"
-  [class.selected]="isVisible && isSelected('seat-0')"
-  (click)="select('seat-0')" 
+  [class.selected]="isVisible && isSelected('seat-1')"
+  (click)="select('seat-1')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-0" transform="translate(19 59)">
+    <g id="table-1" transform="translate(19 59)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
 
-    <g id="screen-0" transform="translate(31 84)">
+    <g id="screen-1" transform="translate(31 84)">
       <rect id="fill" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
@@ -113,30 +113,7 @@
         clip-path="url(#clip)"
       />
     </g>
-    <g id="chair-0" transform="translate(40 30)">
-      <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
-      <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
-    </g>
-  </g>
-
-  <g class="seat" 
-  [class.selected]="isVisible && isSelected('seat-1')"
-  (click)="select('seat-1')" 
-  [style.pointer-events]="isVisible ? 'auto' : 'none'"
-  style="cursor: pointer">
-    <g id="table-1" transform="translate(148 59)">
-      <rect width="66" height="35" stroke="none" />
-      <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
-    </g>
-    <g id="screen-1" transform="translate(160 84)">
-      <rect id="fill-2" width="42" height="4" stroke="none" />
-      <path
-        d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
-        fill="none"
-        clip-path="url(#clip-2)"
-      />
-    </g>
-    <g id="chair-1" transform="translate(169 30)">
+    <g id="chair-1" transform="translate(40 30)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -147,19 +124,19 @@
   (click)="select('seat-2')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-2" transform="translate(85 156) rotate(180)">
+    <g id="table-2" transform="translate(148 59)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-2" transform="translate(73 131) rotate(180)">
-      <rect id="fill-3" width="42" height="4" stroke="none" />
+    <g id="screen-2" transform="translate(160 84)">
+      <rect id="fill-2" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
         fill="none"
-        clip-path="url(#clip-3)"
+        clip-path="url(#clip-2)"
       />
     </g>
-    <g id="chair-2" transform="translate(64 185) rotate(180)">
+    <g id="chair-2" transform="translate(169 30)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -170,11 +147,34 @@
   (click)="select('seat-3')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-3" transform="translate(214 156) rotate(180)">
+    <g id="table-3" transform="translate(85 156) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-3" transform="translate(202 131) rotate(180)">
+    <g id="screen-3" transform="translate(73 131) rotate(180)">
+      <rect id="fill-3" width="42" height="4" stroke="none" />
+      <path
+        d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
+        fill="none"
+        clip-path="url(#clip-3)"
+      />
+    </g>
+    <g id="chair-3" transform="translate(64 185) rotate(180)">
+      <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
+      <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
+    </g>
+  </g>
+
+  <g class="seat" 
+  [class.selected]="isVisible && isSelected('seat-4')"
+  (click)="select('seat-4')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
+    <g id="table-4" transform="translate(214 156) rotate(180)">
+      <rect width="66" height="35" stroke="none" />
+      <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
+    </g>
+    <g id="screen-4" transform="translate(202 131) rotate(180)">
       <rect id="fill-4" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
@@ -182,7 +182,7 @@
         clip-path="url(#clip-4)"
       />
     </g>
-    <g id="chair-3" transform="translate(193 185) rotate(180)">
+    <g id="chair-4" transform="translate(193 185) rotate(180)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -194,15 +194,15 @@
   
 
   <g class="seat" 
-  [class.selected]="isVisible && isSelected('seat-4')"
-  (click)="select('seat-4')" 
+  [class.selected]="isVisible && isSelected('seat-5')"
+  (click)="select('seat-5')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-5" transform="translate(622 59)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-4" transform="translate(634 84)">
+    <g id="screen-5" transform="translate(634 84)">
       <rect id="fill-6" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
@@ -219,15 +219,15 @@
   
 
   <g class="seat" 
-  [class.selected]="isVisible && isSelected('seat-5')"
-  (click)="select('seat-5')" 
+  [class.selected]="isVisible && isSelected('seat-6')"
+  (click)="select('seat-6')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-7" transform="translate(687 156) rotate(180)">
+    <g id="table-6" transform="translate(687 156) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-5" transform="translate(675 131) rotate(180)">
+    <g id="screen-6" transform="translate(675 131) rotate(180)">
       <rect id="fill-8" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
@@ -235,30 +235,7 @@
         clip-path="url(#clip-8)"
       />
     </g>
-    <g id="chair-5" transform="translate(666 185) rotate(180)">
-      <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
-      <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
-    </g>
-  </g>
-
-  <g class="seat" 
-  [class.selected]="isVisible && isSelected('seat-6')"
-  (click)="select('seat-6')" 
-  [style.pointer-events]="isVisible ? 'auto' : 'none'"
-  style="cursor: pointer">
-    <g id="table-4" transform="translate(730 59)">
-      <rect width="66" height="35" stroke="none" />
-      <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
-    </g>
-    <g id="screen-6" transform="translate(742 84)">
-      <rect id="fill-5" width="42" height="4" stroke="none" />
-      <path
-        d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
-        fill="none"
-        clip-path="url(#clip-5)"
-      />
-    </g>
-    <g id="chair-6" transform="translate(751 30)">
+    <g id="chair-6" transform="translate(666 185) rotate(180)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -269,19 +246,19 @@
   (click)="select('seat-7')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-5" transform="translate(859 59)">
+    <g id="table-7" transform="translate(730 59)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-7" transform="translate(871 84)">
-      <rect id="fill-6" width="42" height="4" stroke="none" />
+    <g id="screen-7" transform="translate(742 84)">
+      <rect id="fill-5" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
         fill="none"
-        clip-path="url(#clip-6)"
+        clip-path="url(#clip-5)"
       />
     </g>
-    <g id="chair-7" transform="translate(880 30)">
+    <g id="chair-7" transform="translate(751 30)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -292,19 +269,19 @@
   (click)="select('seat-8')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-6" transform="translate(797 156) rotate(180)">
+    <g id="table-8" transform="translate(859 59)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-8" transform="translate(785 131) rotate(180)">
-      <rect id="fill-7" width="42" height="4" stroke="none" />
+    <g id="screen-8" transform="translate(871 84)">
+      <rect id="fill-6" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
         fill="none"
-        clip-path="url(#clip-7)"
+        clip-path="url(#clip-6)"
       />
     </g>
-    <g id="chair-8" transform="translate(776 185) rotate(180)">
+    <g id="chair-8" transform="translate(880 30)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -315,11 +292,34 @@
   (click)="select('seat-9')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-7" transform="translate(924 156) rotate(180)">
+    <g id="table-9" transform="translate(797 156) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-9" transform="translate(912 131) rotate(180)">
+    <g id="screen-9" transform="translate(785 131) rotate(180)">
+      <rect id="fill-7" width="42" height="4" stroke="none" />
+      <path
+        d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
+        fill="none"
+        clip-path="url(#clip-7)"
+      />
+    </g>
+    <g id="chair-9" transform="translate(776 185) rotate(180)">
+      <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
+      <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
+    </g>
+  </g>
+
+  <g class="seat" 
+  [class.selected]="isVisible && isSelected('seat-10')"
+  (click)="select('seat-10')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
+    <g id="table-10" transform="translate(924 156) rotate(180)">
+      <rect width="66" height="35" stroke="none" />
+      <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
+    </g>
+    <g id="screen-10" transform="translate(912 131) rotate(180)">
       <rect id="fill-8" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
@@ -327,23 +327,23 @@
         clip-path="url(#clip-8)"
       />
     </g>
-    <g id="chair-9" transform="translate(903 185) rotate(180)">
+    <g id="chair-10" transform="translate(903 185) rotate(180)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
   </g>
 
   <g class="seat"
-  [class.selected]="isVisible && isSelected('seat-10')"
-  (click)="select('seat-10')" 
+  [class.selected]="isVisible && isSelected('seat-11')"
+  (click)="select('seat-11')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-0" transform="translate(19 226)">
+    <g id="table-11" transform="translate(19 226)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
 
-    <g id="screen-10" transform="translate(31 251)">
+    <g id="screen-11" transform="translate(31 251)">
       <rect id="fill" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
@@ -351,22 +351,22 @@
         clip-path="url(#clip)"
       />
     </g>
-    <g id="chair-10" transform="translate(40 197)">
+    <g id="chair-11" transform="translate(40 197)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
   </g>
 
   <g class="seat" 
-  [class.selected]="isVisible && isSelected('seat-11')"
-  (click)="select('seat-11')" 
+  [class.selected]="isVisible && isSelected('seat-12')"
+  (click)="select('seat-12')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-16" transform="translate(148 226)">
+    <g id="table-12" transform="translate(148 226)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-11" transform="translate(160 251)">
+    <g id="screen-12" transform="translate(160 251)">
       <rect id="fill-17" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
@@ -374,30 +374,7 @@
         clip-path="url(#clip-17)"
       />
     </g>
-    <g id="chair-11" transform="translate(169 197)">
-      <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
-      <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
-    </g>
-</g>
-
-<g class="seat" 
-  [class.selected]="isVisible && isSelected('seat-12')"
-  (click)="select('seat-12')" 
-  [style.pointer-events]="isVisible ? 'auto' : 'none'"
-  style="cursor: pointer">
-    <g id="table-17" transform="translate(85 323) rotate(180)">
-      <rect width="66" height="35" stroke="none" />
-      <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
-    </g>
-    <g id="screen-12" transform="translate(73 298) rotate(180)">
-      <rect id="fill-18" width="42" height="4" stroke="none" />
-      <path
-        d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
-        fill="none"
-        clip-path="url(#clip-18)"
-      />
-    </g>
-    <g id="chair-12" transform="translate(64 352) rotate(180)">
+    <g id="chair-12" transform="translate(169 197)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -408,11 +385,34 @@
   (click)="select('seat-13')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-18" transform="translate(214 323) rotate(180)">
+    <g id="table-13" transform="translate(85 323) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-13" transform="translate(202 298) rotate(180)">
+    <g id="screen-13" transform="translate(73 298) rotate(180)">
+      <rect id="fill-18" width="42" height="4" stroke="none" />
+      <path
+        d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
+        fill="none"
+        clip-path="url(#clip-18)"
+      />
+    </g>
+    <g id="chair-13" transform="translate(64 352) rotate(180)">
+      <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
+      <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
+    </g>
+</g>
+
+<g class="seat" 
+  [class.selected]="isVisible && isSelected('seat-14')"
+  (click)="select('seat-14')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
+    <g id="table-14" transform="translate(214 323) rotate(180)">
+      <rect width="66" height="35" stroke="none" />
+      <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
+    </g>
+    <g id="screen-14" transform="translate(202 298) rotate(180)">
       <rect id="fill-19" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
@@ -420,22 +420,22 @@
         clip-path="url(#clip-19)"
       />
     </g>
-    <g id="chair-13" transform="translate(193 352) rotate(180)">
+    <g id="chair-14" transform="translate(193 352) rotate(180)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
   </g>
 
   <g class="seat" 
-  [class.selected]="isVisible && isSelected('seat-14')"
-  (click)="select('seat-14')" 
+  [class.selected]="isVisible && isSelected('seat-15')"
+  (click)="select('seat-15')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-19" transform="translate(19 393)">
+    <g id="table-15" transform="translate(19 393)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-14" transform="translate(31 418)">
+    <g id="screen-15" transform="translate(31 418)">
       <rect id="fill-20" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
@@ -443,30 +443,7 @@
         clip-path="url(#clip-20)"
       />
     </g>
-    <g id="chair-14" transform="translate(40 364)">
-      <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
-      <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
-    </g>
-</g>
-
-<g class="seat" 
-  [class.selected]="isVisible && isSelected('seat-15')"
-  (click)="select('seat-15')" 
-  [style.pointer-events]="isVisible ? 'auto' : 'none'"
-  style="cursor: pointer">
-    <g id="table-20" transform="translate(148 393)">
-      <rect width="66" height="35" stroke="none" />
-      <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
-    </g>
-    <g id="screen-15" transform="translate(160 418)">
-      <rect id="fill-15" width="42" height="4" stroke="none" />
-      <path
-        d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
-        fill="none"
-        clip-path="url(#clip-15)"
-      />
-    </g>
-    <g id="chair-15" transform="translate(169 364)">
+    <g id="chair-15" transform="translate(40 364)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -477,19 +454,19 @@
   (click)="select('seat-16')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-21" transform="translate(85 491) rotate(180)">
+    <g id="table-16" transform="translate(148 393)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-16" transform="translate(73 466) rotate(180)">
-      <rect id="fill-16" width="42" height="4" stroke="none" />
+    <g id="screen-16" transform="translate(160 418)">
+      <rect id="fill-15" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
         fill="none"
-        clip-path="url(#clip-16)"
+        clip-path="url(#clip-15)"
       />
     </g>
-    <g id="chair-16" transform="translate(64 520) rotate(180)">
+    <g id="chair-16" transform="translate(169 364)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -500,19 +477,19 @@
   (click)="select('seat-17')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-22" transform="translate(214 491) rotate(180)">
+    <g id="table-17" transform="translate(85 491) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-17" transform="translate(202 466) rotate(180)">
-      <rect id="fill-17" width="42" height="4" stroke="none" />
+    <g id="screen-17" transform="translate(73 466) rotate(180)">
+      <rect id="fill-16" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
         fill="none"
-        clip-path="url(#clip-17)"
+        clip-path="url(#clip-16)"
       />
     </g>
-    <g id="chair-17" transform="translate(193 520) rotate(180)">
+    <g id="chair-17" transform="translate(64 520) rotate(180)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -523,19 +500,19 @@
   (click)="select('seat-18')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-23" transform="translate(256 393)">
+    <g id="table-18" transform="translate(214 491) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-18" transform="translate(268 418)">
-      <rect id="fill-18" width="42" height="4" stroke="none" />
+    <g id="screen-18" transform="translate(202 466) rotate(180)">
+      <rect id="fill-17" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
         fill="none"
-        clip-path="url(#clip-18)"
+        clip-path="url(#clip-17)"
       />
     </g>
-    <g id="chair-18" transform="translate(277 364)">
+    <g id="chair-18" transform="translate(193 520) rotate(180)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -546,19 +523,19 @@
   (click)="select('seat-19')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-24" transform="translate(385 393)">
+    <g id="table-19" transform="translate(256 393)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-19" transform="translate(397 418)">
-      <rect id="fill-19" width="42" height="4" stroke="none" />
+    <g id="screen-19" transform="translate(268 418)">
+      <rect id="fill-18" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
         fill="none"
-        clip-path="url(#clip-19)"
+        clip-path="url(#clip-18)"
       />
     </g>
-    <g id="chair-19" transform="translate(406 364)">
+    <g id="chair-19" transform="translate(277 364)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -569,19 +546,19 @@
   (click)="select('seat-20')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-25" transform="translate(322 491) rotate(180)">
+    <g id="table-24" transform="translate(385 393)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-20" transform="translate(310 466) rotate(180)">
-      <rect id="fill-20" width="42" height="4" stroke="none" />
+    <g id="screen-20" transform="translate(397 418)">
+      <rect id="fill-19" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
         fill="none"
-        clip-path="url(#clip-20)"
+        clip-path="url(#clip-19)"
       />
     </g>
-    <g id="chair-20" transform="translate(301 520) rotate(180)">
+    <g id="chair-20" transform="translate(406 364)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -592,19 +569,19 @@
   (click)="select('seat-21')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-26" transform="translate(451 491) rotate(180)">
+    <g id="table-21" transform="translate(322 491) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-21" transform="translate(439 466) rotate(180)">
-      <rect id="fill-21" width="42" height="4" stroke="none" />
+    <g id="screen-21" transform="translate(310 466) rotate(180)">
+      <rect id="fill-20" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
         fill="none"
-        clip-path="url(#clip-21)"
+        clip-path="url(#clip-20)"
       />
     </g>
-    <g id="chair-21" transform="translate(430 520) rotate(180)">
+    <g id="chair-21" transform="translate(301 520) rotate(180)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -615,19 +592,19 @@
   (click)="select('seat-22')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-23" transform="translate(493 393)">
+    <g id="table-26" transform="translate(451 491) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-22" transform="translate(505 418)">
-      <rect id="fill-24" width="42" height="4" stroke="none" />
+    <g id="screen-22" transform="translate(439 466) rotate(180)">
+      <rect id="fill-21" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
         fill="none"
-        clip-path="url(#clip-24)"
+        clip-path="url(#clip-21)"
       />
     </g>
-    <g id="chair-22" transform="translate(514 364)">
+    <g id="chair-22" transform="translate(430 520) rotate(180)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -638,19 +615,19 @@
   (click)="select('seat-23')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-24" transform="translate(622 393)">
+    <g id="table-23" transform="translate(493 393)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-23" transform="translate(634 418)">
-      <rect id="fill-25" width="42" height="4" stroke="none" />
+    <g id="screen-23" transform="translate(505 418)">
+      <rect id="fill-24" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
         fill="none"
-        clip-path="url(#clip-25)"
+        clip-path="url(#clip-24)"
       />
     </g>
-    <g id="chair-23" transform="translate(643 364)">
+    <g id="chair-23" transform="translate(514 364)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -661,19 +638,19 @@
   (click)="select('seat-24')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-25" transform="translate(559 491) rotate(180)">
+    <g id="table-24" transform="translate(622 393)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-24" transform="translate(547 466) rotate(180)">
-      <rect id="fill-26" width="42" height="4" stroke="none" />
+    <g id="screen-24" transform="translate(634 418)">
+      <rect id="fill-25" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
         fill="none"
-        clip-path="url(#clip-26)"
+        clip-path="url(#clip-25)"
       />
     </g>
-    <g id="chair-24" transform="translate(538 520) rotate(180)">
+    <g id="chair-24" transform="translate(643 364)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -684,11 +661,34 @@
   (click)="select('seat-25')" 
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
+    <g id="table-25" transform="translate(559 491) rotate(180)">
+      <rect width="66" height="35" stroke="none" />
+      <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
+    </g>
+    <g id="screen-25" transform="translate(547 466) rotate(180)">
+      <rect id="fill-26" width="42" height="4" stroke="none" />
+      <path
+        d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
+        fill="none"
+        clip-path="url(#clip-26)"
+      />
+    </g>
+    <g id="chair-25" transform="translate(538 520) rotate(180)">
+      <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
+      <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
+    </g>
+</g>
+
+<g class="seat" 
+  [class.selected]="isVisible && isSelected('seat-26')"
+  (click)="select('seat-26')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-26" transform="translate(688 491) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-25" transform="translate(676 466) rotate(180)">
+    <g id="screen-26" transform="translate(676 466) rotate(180)">
       <rect id="fill-27" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
@@ -696,7 +696,7 @@
         clip-path="url(#clip-27)"
       />
     </g>
-    <g id="chair-25" transform="translate(667 520) rotate(180)">
+    <g id="chair-26" transform="translate(667 520) rotate(180)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
