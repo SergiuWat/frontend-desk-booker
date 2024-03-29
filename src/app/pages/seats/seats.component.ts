@@ -1,11 +1,13 @@
 import { DatePipe } from '@angular/common';
 import { Component, forwardRef, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Desk } from 'src/app/models/Desk';
 import { BookingDataService } from 'src/app/services/booking-data.service';
 import { BookingService } from 'src/app/services/booking.service';
 import { DeskService } from 'src/app/services/desk.service';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { BookingdialogComponent } from '../bookingdialog/bookingdialog.component';
 
 @Component({
   selector: 'app-seats',
@@ -28,7 +30,8 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
               private employeeService: EmployeeService,
               private bookingDataService: BookingDataService,
               private datePipe: DatePipe, 
-              private sharedBookingData: BookingDataService,  ){
+              private sharedBookingData: BookingDataService,
+              private dialog: MatDialog){
 
     }
 
@@ -44,11 +47,29 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
         this.value = '';
       } else {
         this.value = option;
+        const deskId = this.extractDeskId(option);
+        this.openBookingDialog(deskId);
       }
       this.onChange(this.value);
       this.markAsTouched();
     }
   }
+
+  private openBookingDialog(deskId: number): void {
+    const dialogRef = this.dialog.open(BookingdialogComponent, {
+        width: '600px',
+        height: '270px',
+        data: { deskId: deskId, bookingData: this.bookingDataService.bookingData}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+        if (result === 'confirm') {
+          console.log(result);
+          console.log(deskId)
+            this.addBooking(deskId);
+        }
+    });
+}
   
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes.desks && changes.desks.currentValue) {
@@ -73,7 +94,6 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
           const seatElement = document.getElementById(`seat-${desk.deskNumber}`);
           if (seatElement) {
               const isAvailable = this.checkDeskAvailability(desk.deskNumber);
-              seatElement.setAttribute('fill', isAvailable ? '#ccc' : '#fff');
               seatElement.style.pointerEvents = isAvailable ? 'none' : 'auto';
           }
         });
@@ -88,6 +108,10 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
     this.bookingService.addBooking(this.bookingDataService.bookingData).subscribe();
     window.location.reload();    
   }
+
+  private extractDeskId(option: string): number {
+    return parseInt(option.split('-')[1]);
+}
 
   checkDeskAvailability(deskId: number): boolean {
     return this.isDeskBookedMap.get(deskId) || false;

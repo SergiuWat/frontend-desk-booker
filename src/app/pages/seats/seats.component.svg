@@ -98,6 +98,7 @@
   <g class="seat" id="seat-1"
   [class.selected]="isVisible && isSelected('seat-1')"
   (click)="select('seat-1')" 
+  [style.fill]="isSelected('seat-1') ? '#4cdf0c' : (checkDeskAvailability(1) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-1" transform="translate(19 59)">
@@ -122,6 +123,7 @@
   <g class="seat" id="seat-2"
   [class.selected]="isVisible && isSelected('seat-2')"
   (click)="select('seat-2')" 
+  [style.fill]="isSelected('seat-2') ? '#4cdf0c' : (checkDeskAvailability(2) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-2" transform="translate(148 59)">
@@ -145,6 +147,7 @@
   <g class="seat" id="seat-3"
   [class.selected]="isVisible && isSelected('seat-3')"
   (click)="select('seat-3')" 
+  [style.fill]="isSelected('seat-3') ? '#4cdf0c' : (checkDeskAvailability(3) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-3" transform="translate(85 156) rotate(180)">
@@ -168,6 +171,7 @@
   <g class="seat" id="seat-4"
   [class.selected]="isVisible && isSelected('seat-4')"
   (click)="select('seat-4')" 
+  [style.fill]="isSelected('seat-4') ? '#4cdf0c' : (checkDeskAvailability(4) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-4" transform="translate(214 156) rotate(180)">
@@ -196,6 +200,7 @@
   <g class="seat" id="seat-5"
   [class.selected]="isVisible && isSelected('seat-5')"
   (click)="select('seat-5')" 
+  [style.fill]="isSelected('seat-5') ? '#4cdf0c' : (checkDeskAvailability(5) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-5" transform="translate(622 59)">
@@ -221,6 +226,7 @@
   <g class="seat" id="seat-6"
   [class.selected]="isVisible && isSelected('seat-6')"
   (click)="select('seat-6')" 
+  [style.fill]="isSelected('seat-6') ? '#4cdf0c' : (checkDeskAvailability(6) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-6" transform="translate(687 156) rotate(180)">
@@ -244,6 +250,7 @@
   <g class="seat" id="seat-7" 
   [class.selected]="isVisible && isSelected('seat-7')"
   (click)="select('seat-7')" 
+  [style.fill]="isSelected('seat-7') ? '#4cdf0c' : (checkDeskAvailability(7) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-7" transform="translate(730 59)">
@@ -267,6 +274,7 @@
   <g class="seat" id="seat-8" 
   [class.selected]="isVisible && isSelected('seat-8')"
   (click)="select('seat-8')" 
+  [style.fill]="isSelected('seat-8') ? '#4cdf0c' : (checkDeskAvailability(8) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-8" transform="translate(859 59)">
@@ -290,6 +298,7 @@
   <g class="seat" id="seat-9" 
   [class.selected]="isVisible && isSelected('seat-9')"
   (click)="select('seat-9')" 
+  [style.fill]="isSelected('seat-9') ? '#4cdf0c' : (checkDeskAvailability(9) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-9" transform="translate(797 156) rotate(180)">
@@ -313,6 +322,7 @@
   <g class="seat" id="seat-10"
   [class.selected]="isVisible && isSelected('seat-10')"
   (click)="select('seat-10')" 
+  [style.fill]="isSelected('seat-10') ? '#4cdf0c' : (checkDeskAvailability(10) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-10" transform="translate(924 156) rotate(180)">
@@ -336,6 +346,7 @@
   <g class="seat" id="seat-11"
   [class.selected]="isVisible && isSelected('seat-11')"
   (click)="select('seat-11')" 
+  [style.fill]="isSelected('seat-11') ? '#4cdf0c' : (checkDeskAvailability(11) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-11" transform="translate(19 226)">
@@ -360,6 +371,7 @@
   <g class="seat" id="seat-12"
   [class.selected]="isVisible && isSelected('seat-12')"
   (click)="select('seat-12')" 
+  [style.fill]="isSelected('seat-12') ? '#4cdf0c' : (checkDeskAvailability(12) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-12" transform="translate(148 226)">
@@ -383,6 +395,7 @@
 <g class="seat" id="seat-13"
   [class.selected]="isVisible && isSelected('seat-13')"
   (click)="select('seat-13')" 
+  [style.fill]="isSelected('seat-13') ? '#4cdf0c' : (checkDeskAvailability(13) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-13" transform="translate(85 323) rotate(180)">
@@ -406,6 +419,7 @@
 <g class="seat" id="seat-14"
   [class.selected]="isVisible && isSelected('seat-14')"
   (click)="select('seat-14')" 
+  [style.fill]="isSelected('seat-14') ? '#4cdf0c' : (checkDeskAvailability(14) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-14" transform="translate(214 323) rotate(180)">
@@ -429,6 +443,7 @@
   <g class="seat" id="seat-15"
   [class.selected]="isVisible && isSelected('seat-15')"
   (click)="select('seat-15')" 
+  [style.fill]="isSelected('seat-15') ? '#4cdf0c' : (checkDeskAvailability(15) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-15" transform="translate(19 393)">
@@ -452,6 +467,7 @@
 <g class="seat" id="seat-16"
   [class.selected]="isVisible && isSelected('seat-16')"
   (click)="select('seat-16')" 
+  [style.fill]="isSelected('seat-16') ? '#4cdf0c' : (checkDeskAvailability(16) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-16" transform="translate(148 393)">
@@ -475,6 +491,7 @@
 <g class="seat" id="seat-17"
   [class.selected]="isVisible && isSelected('seat-17')"
   (click)="select('seat-17')" 
+  [style.fill]="isSelected('seat-17') ? '#4cdf0c' : (checkDeskAvailability(17) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-17" transform="translate(85 491) rotate(180)">
@@ -498,6 +515,7 @@
 <g class="seat" id="seat-18"
   [class.selected]="isVisible && isSelected('seat-18')"
   (click)="select('seat-18')" 
+  [style.fill]="isSelected('seat-18') ? '#4cdf0c' : (checkDeskAvailability(18) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-18" transform="translate(214 491) rotate(180)">
@@ -521,6 +539,7 @@
 <g class="seat" id="seat-19"
   [class.selected]="isVisible && isSelected('seat-19')"
   (click)="select('seat-19')" 
+  [style.fill]="isSelected('seat-19') ? '#4cdf0c' : (checkDeskAvailability(19) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-19" transform="translate(256 393)">
@@ -544,6 +563,7 @@
 <g class="seat" id="seat-20"
   [class.selected]="isVisible && isSelected('seat-20')"
   (click)="select('seat-20')" 
+  [style.fill]="isSelected('seat-20') ? '#4cdf0c' : (checkDeskAvailability(20) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-24" transform="translate(385 393)">
@@ -567,6 +587,7 @@
 <g class="seat" id="seat-21"
   [class.selected]="isVisible && isSelected('seat-21')"
   (click)="select('seat-21')" 
+  [style.fill]="isSelected('seat-21') ? '#4cdf0c' : (checkDeskAvailability(21) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-21" transform="translate(322 491) rotate(180)">
@@ -590,6 +611,7 @@
 <g class="seat" id="seat-22"
   [class.selected]="isVisible && isSelected('seat-22')"
   (click)="select('seat-22')" 
+  [style.fill]="isSelected('seat-22') ? '#4cdf0c' : (checkDeskAvailability(22) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-26" transform="translate(451 491) rotate(180)">
@@ -613,6 +635,7 @@
 <g class="seat" id="seat-23"
   [class.selected]="isVisible && isSelected('seat-23')"
   (click)="select('seat-23')" 
+  [style.fill]="isSelected('seat-23') ? '#4cdf0c' : (checkDeskAvailability(23) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-23" transform="translate(493 393)">
@@ -636,6 +659,7 @@
 <g class="seat" id="seat-24"
   [class.selected]="isVisible && isSelected('seat-24')"
   (click)="select('seat-24')" 
+  [style.fill]="isSelected('seat-24') ? '#4cdf0c' : (checkDeskAvailability(24) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-24" transform="translate(622 393)">
@@ -658,7 +682,8 @@
 
 <g class="seat" id="seat-25"
   [class.selected]="isVisible && isSelected('seat-25')"
-  (click)="select('seat-25')" 
+  (click)="select('seat-25')"
+  [style.fill]="isSelected('seat-25') ? '#4cdf0c' : (checkDeskAvailability(25) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-25" transform="translate(559 491) rotate(180)">
@@ -682,6 +707,7 @@
 <g class="seat" id="seat-26"
   [class.selected]="isVisible && isSelected('seat-26')"
   (click)="select('seat-26')" 
+  [style.fill]="isSelected('seat-26') ? '#4cdf0c' : (checkDeskAvailability(26) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
     <g id="table-26" transform="translate(688 491) rotate(180)">

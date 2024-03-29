@@ -28,6 +28,7 @@ import { DatePipe } from '@angular/common';
 import { WaitinglistComponent } from './pages/waitinglist/waitinglist.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { SeatsComponent } from './pages/seats/seats.component';
+import { BookingdialogComponent } from './pages/bookingdialog/bookingdialog.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { SeatsComponent } from './pages/seats/seats.component';
     WaitinglistComponent,
     HistoryComponent,
     SeatsComponent,
+    BookingdialogComponent
   ],
   imports: [
     BrowserModule,
