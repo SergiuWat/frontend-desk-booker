@@ -36,7 +36,7 @@
                 <mat-datepicker #endPicker></mat-datepicker>
             </mat-form-field>
         </div>
-        <app-seats></app-seats>
+        <app-seats [isVisible]="isVisible"></app-seats>
         <div class="row mt-5" *ngIf="isVisible">
             <div class="col">
                 <div class="row">

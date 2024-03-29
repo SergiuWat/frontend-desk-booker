@@ -95,6 +95,7 @@ handleEndDate() {
 
   resetDesks() {
     this.desks = [];
+    this.isVisible = false;
 }
 
 

@@ -96,8 +96,10 @@
   </g>
 
   <g class="seat"
-  [class.selected]="isSelected('seat-0')"
-  (click)="select('seat-0')" >
+  [class.selected]="isVisible && isSelected('seat-0')"
+  (click)="select('seat-0')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-0" transform="translate(19 59)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -118,8 +120,10 @@
   </g>
 
   <g class="seat" 
-  [class.selected]="isSelected('seat-1')"
-  (click)="select('seat-1')">
+  [class.selected]="isVisible && isSelected('seat-1')"
+  (click)="select('seat-1')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-1" transform="translate(148 59)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -139,8 +143,10 @@
   </g>
 
   <g class="seat" 
-  [class.selected]="isSelected('seat-2')"
-  (click)="select('seat-2')">
+  [class.selected]="isVisible && isSelected('seat-2')"
+  (click)="select('seat-2')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-2" transform="translate(85 156) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -160,8 +166,10 @@
   </g>
 
   <g class="seat" 
-  [class.selected]="isSelected('seat-3')"
-  (click)="select('seat-3')">
+  [class.selected]="isVisible && isSelected('seat-3')"
+  (click)="select('seat-3')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-3" transform="translate(214 156) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -186,8 +194,10 @@
   
 
   <g class="seat" 
-  [class.selected]="isSelected('seat-4')"
-  (click)="select('seat-4')">
+  [class.selected]="isVisible && isSelected('seat-4')"
+  (click)="select('seat-4')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-5" transform="translate(622 59)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -209,8 +219,10 @@
   
 
   <g class="seat" 
-  [class.selected]="isSelected('seat-5')"
-  (click)="select('seat-5')">
+  [class.selected]="isVisible && isSelected('seat-5')"
+  (click)="select('seat-5')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-7" transform="translate(687 156) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -230,8 +242,10 @@
   </g>
 
   <g class="seat" 
-  [class.selected]="isSelected('seat-6')"
-  (click)="select('seat-6')">
+  [class.selected]="isVisible && isSelected('seat-6')"
+  (click)="select('seat-6')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-4" transform="translate(730 59)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -251,8 +265,10 @@
   </g>
 
   <g class="seat" 
-  [class.selected]="isSelected('seat-7')"
-  (click)="select('seat-7')">
+  [class.selected]="isVisible && isSelected('seat-7')"
+  (click)="select('seat-7')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-5" transform="translate(859 59)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -272,8 +288,10 @@
   </g>
 
   <g class="seat" 
-  [class.selected]="isSelected('seat-8')"
-  (click)="select('seat-8')">
+  [class.selected]="isVisible && isSelected('seat-8')"
+  (click)="select('seat-8')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-6" transform="translate(797 156) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -293,8 +311,10 @@
   </g>
 
   <g class="seat" 
-  [class.selected]="isSelected('seat-9')"
-  (click)="select('seat-9')">
+  [class.selected]="isVisible && isSelected('seat-9')"
+  (click)="select('seat-9')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-7" transform="translate(924 156) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -314,8 +334,10 @@
   </g>
 
   <g class="seat"
-  [class.selected]="isSelected('seat-10')"
-  (click)="select('seat-10')" >
+  [class.selected]="isVisible && isSelected('seat-10')"
+  (click)="select('seat-10')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-0" transform="translate(19 226)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -336,8 +358,10 @@
   </g>
 
   <g class="seat" 
-  [class.selected]="isSelected('seat-11')"
-  (click)="select('seat-11')">
+  [class.selected]="isVisible && isSelected('seat-11')"
+  (click)="select('seat-11')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-16" transform="translate(148 226)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -357,8 +381,10 @@
 </g>
 
 <g class="seat" 
-  [class.selected]="isSelected('seat-12')"
-  (click)="select('seat-12')">
+  [class.selected]="isVisible && isSelected('seat-12')"
+  (click)="select('seat-12')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-17" transform="translate(85 323) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -378,8 +404,10 @@
 </g>
 
 <g class="seat" 
-  [class.selected]="isSelected('seat-13')"
-  (click)="select('seat-13')">
+  [class.selected]="isVisible && isSelected('seat-13')"
+  (click)="select('seat-13')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-18" transform="translate(214 323) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -399,8 +427,10 @@
   </g>
 
   <g class="seat" 
-  [class.selected]="isSelected('seat-14')"
-  (click)="select('seat-14')">
+  [class.selected]="isVisible && isSelected('seat-14')"
+  (click)="select('seat-14')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-19" transform="translate(19 393)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -420,8 +450,10 @@
 </g>
 
 <g class="seat" 
-  [class.selected]="isSelected('seat-15')"
-  (click)="select('seat-15')">
+  [class.selected]="isVisible && isSelected('seat-15')"
+  (click)="select('seat-15')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-20" transform="translate(148 393)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -441,8 +473,10 @@
 </g>
 
 <g class="seat" 
-  [class.selected]="isSelected('seat-16')"
-  (click)="select('seat-16')">
+  [class.selected]="isVisible && isSelected('seat-16')"
+  (click)="select('seat-16')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-21" transform="translate(85 491) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -462,8 +496,10 @@
 </g>
 
 <g class="seat" 
-  [class.selected]="isSelected('seat-17')"
-  (click)="select('seat-17')">
+  [class.selected]="isVisible && isSelected('seat-17')"
+  (click)="select('seat-17')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-22" transform="translate(214 491) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -483,8 +519,10 @@
 </g>
 
 <g class="seat" 
-  [class.selected]="isSelected('seat-18')"
-  (click)="select('seat-18')">
+  [class.selected]="isVisible && isSelected('seat-18')"
+  (click)="select('seat-18')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-23" transform="translate(256 393)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -504,8 +542,10 @@
 </g>
 
 <g class="seat" 
-  [class.selected]="isSelected('seat-19')"
-  (click)="select('seat-19')">
+  [class.selected]="isVisible && isSelected('seat-19')"
+  (click)="select('seat-19')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-24" transform="translate(385 393)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -525,8 +565,10 @@
 </g>
 
 <g class="seat" 
-  [class.selected]="isSelected('seat-20')"
-  (click)="select('seat-20')">
+  [class.selected]="isVisible && isSelected('seat-20')"
+  (click)="select('seat-20')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-25" transform="translate(322 491) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -546,8 +588,10 @@
 </g>
 
 <g class="seat" 
-  [class.selected]="isSelected('seat-21')"
-  (click)="select('seat-21')">
+  [class.selected]="isVisible && isSelected('seat-21')"
+  (click)="select('seat-21')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-26" transform="translate(451 491) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -567,8 +611,10 @@
 </g>
 
 <g class="seat" 
-  [class.selected]="isSelected('seat-22')"
-  (click)="select('seat-22')">
+  [class.selected]="isVisible && isSelected('seat-22')"
+  (click)="select('seat-22')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-23" transform="translate(493 393)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -588,8 +634,10 @@
 </g>
 
 <g class="seat" 
-  [class.selected]="isSelected('seat-23')"
-  (click)="select('seat-23')">
+  [class.selected]="isVisible && isSelected('seat-23')"
+  (click)="select('seat-23')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-24" transform="translate(622 393)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -609,8 +657,10 @@
 </g>
 
 <g class="seat" 
-  [class.selected]="isSelected('seat-24')"
-  (click)="select('seat-24')">
+  [class.selected]="isVisible && isSelected('seat-24')"
+  (click)="select('seat-24')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-25" transform="translate(559 491) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
@@ -630,8 +680,10 @@
 </g>
 
 <g class="seat" 
-  [class.selected]="isSelected('seat-25')"
-  (click)="select('seat-25')">
+  [class.selected]="isVisible && isSelected('seat-25')"
+  (click)="select('seat-25')" 
+  [style.pointer-events]="isVisible ? 'auto' : 'none'"
+  style="cursor: pointer">
     <g id="table-26" transform="translate(688 491) rotate(180)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
