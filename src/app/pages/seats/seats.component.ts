@@ -77,9 +77,14 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
       this.updateSeats()
     }
   }
+
+  resetIsDeskBookedMap() {
+    this.isDeskBookedMap = new Map<number, boolean>();
+  }
   
 
   updateSeats(): void {
+    this.resetIsDeskBookedMap();
     if (this.desks) {
       this.bookingService.getAllBookedDesksByDay(this.sharedBookingData.bookingData.startDate, this.sharedBookingData.bookingData.endDate).subscribe(bookings =>{
         this.desks.forEach(desk =>{
