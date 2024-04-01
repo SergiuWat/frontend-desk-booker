@@ -9,6 +9,7 @@ import { DepartmentsComponent } from './pages/departments/departments.component'
 import { BookingsComponent } from './pages/bookings/bookings.component';
 import { DeskbookingComponent } from './pages/deskbooking/deskbooking.component';
 import { WaitinglistComponent } from './pages/waitinglist/waitinglist.component';
+import { HistoryComponent } from './pages/history/history.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:"reset-password", component: ResetPasswordComponent},
   {path:"floors/:id/departments", component: DepartmentsComponent},
   {path:"bookings", component: BookingsComponent},
+  {path:"history", component: HistoryComponent},
   {path:"desk-booking/:id", component: DeskbookingComponent},
   {path: "waitinglist", component: WaitinglistComponent}
 ];

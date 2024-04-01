@@ -1,0 +1,14 @@
+<!-- booking-dialog.component.html -->
+
+<div class="dialog-content">
+    <h1>Booking Confirmation</h1>
+    <p><strong>Desk ID:</strong> {{ data.deskId }}</p>
+    <p><strong>Start Date:</strong> {{ bookingData.startDate | date: 'medium' }}</p>
+    <p><strong>End Date:</strong> {{ bookingData.endDate | date: 'medium' }}</p>
+  
+    <div class="button-container">
+      <button mat-button class="cancel-button" (click)="onCancel()">Cancel</button>
+      <button mat-button class="confirm-button" (click)="onConfirm()">Confirm</button>
+    </div>
+  </div>
+  

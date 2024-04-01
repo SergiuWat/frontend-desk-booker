@@ -1,0 +1,33 @@
+.dialog-content {
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    margin-bottom: 10px;
+  }
+  
+  .button-container {
+    margin-top: 40px; 
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .confirm-button {
+    background-color: #4caf50; /* Green */
+    color: white;
+  }
+  
+  .cancel-button {
+    background-color: #f44336; /* Red */
+    color: white;
+  }
+  
+  .mat-button {
+    margin-left: 10px;
+  }

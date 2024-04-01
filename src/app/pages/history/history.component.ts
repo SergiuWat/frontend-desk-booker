@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { Booking } from 'src/app/models/Booking';
 import { BookingService } from 'src/app/services/booking.service';
 import { DepartmentService } from 'src/app/services/department.service';
@@ -6,29 +6,23 @@ import { DeskService } from 'src/app/services/desk.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
-  selector: 'app-bookings',
-  templateUrl: './bookings.component.html',
-  styleUrls: ['./bookings.component.css']
+  selector: 'app-history',
+  templateUrl: './history.component.html',
+  styleUrls: ['./history.component.css']
 })
-export class BookingsComponent implements OnInit {
+export class HistoryComponent implements AfterViewInit{
   employeeEmail: string;
   bookings: Booking[];
-
-  selectedBookings: Booking[] = [];
 
   constructor(private bookingService: BookingService, private employeeService: EmployeeService, private deskService: DeskService, private departmentService: DepartmentService){
 
   }
-
-  ngOnInit(): void {
-    this.loadBookings();
-  }
-
-  loadBookings() {
+  
+  ngAfterViewInit(): void {
     this.employeeService.getEmployeeInfo().subscribe(response => {
       this.employeeEmail = response.email;
 
-      this.bookingService.getActiveBookingsByEmployeeEmail(this.employeeEmail).subscribe(bookings => {
+      this.bookingService.getBookingHistoryByEmployeeEmail(this.employeeEmail).subscribe(bookings => {
         this.bookings = bookings;
 
         this.bookings.forEach(booking => {
@@ -47,19 +41,4 @@ export class BookingsComponent implements OnInit {
     });
   }
 
-  toggleSelection(checked: boolean, booking: any) {
-    if (checked && !this.selectedBookings.includes(booking)) {
-      this.selectedBookings.push(booking);
-    } else if (!checked && this.selectedBookings.includes(booking)) {
-      this.selectedBookings = this.selectedBookings.filter(selected => selected !== booking);
-    }
-  }
-
-  cancelSelectedBooking() {
-    this.selectedBookings.forEach(booking => {
-      this.bookingService.cancelBooking(booking.id).subscribe()});
-
-    this.selectedBookings = [];
-    window.location.reload();
-  }
 }
