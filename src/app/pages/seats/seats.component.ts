@@ -111,7 +111,7 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
 
   private extractDeskId(option: string): number {
     return parseInt(option.split('-')[1]);
-}
+  }
 
   checkDeskAvailability(deskId: number): boolean {
     return this.isDeskBookedMap.get(deskId) || false;
@@ -140,4 +140,19 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
   setDisabledState(isDisabled: boolean): void {
     this.isDisabled = isDisabled;
   }
+
+  public resetSeats(): void {
+    this.value = '';
+    this.touched = false;
+    this.onChange(this.value);
+    
+    this.desks.forEach(desk => {
+      const seatElement = document.getElementById(`seat-${desk.deskNumber}`);
+      if (seatElement) {
+        seatElement.style.pointerEvents = 'none';
+        seatElement.style.fill = '#0cc'
+      }
+    });
+  }
+  
 }

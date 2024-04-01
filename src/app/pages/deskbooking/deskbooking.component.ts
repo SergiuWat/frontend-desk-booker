@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map, of } from 'rxjs';
@@ -8,6 +8,7 @@ import { BookingDataService } from 'src/app/services/booking-data.service';
 import { BookingService } from 'src/app/services/booking.service';
 import { DeskService } from 'src/app/services/desk.service';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { SeatsComponent } from '../seats/seats.component';
 
 @Component({
   selector: 'app-deskbooking',
@@ -15,7 +16,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
   styleUrls: ['./deskbooking.component.css']
 })
 export class DeskbookingComponent implements OnInit{
-
+  @ViewChild(SeatsComponent) seatsComponent: SeatsComponent;
   selectedDate: Date;
   startDate: Date;
   endDate: Date;
@@ -67,7 +68,9 @@ export class DeskbookingComponent implements OnInit{
     if (this.startDate && this.startDate >= currentDate) {
         this.sharedBookingData.bookingData.startDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd');
         this.bookingDataService.bookingData.startDate = this.sharedBookingData.bookingData.startDate;
-        //this.updateDesks();
+        if(this.endDate !== null){
+          this.updateDesks();
+        }
     } else {
         this.snackBar.open('Please select a valid start date', 'Close', { duration: 3000 });
     }
@@ -93,8 +96,12 @@ handleEndDate() {
   }
 
   resetDesks() {
+    this.selectedDate = null;
+    this.startDate = null;
+    this.endDate = null;
     this.desks = [];
     this.isVisible = false;
+    this.seatsComponent.resetSeats();
 }
 
 
