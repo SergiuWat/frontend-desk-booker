@@ -44,7 +44,6 @@ export class DeskbookingComponent implements OnInit{
   }
 
   handleSelectedDate() {
-
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
     this.isVisible = true;
