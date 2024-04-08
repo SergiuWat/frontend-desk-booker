@@ -5,7 +5,8 @@ export class Booking {
     id: number;
     employeeId: number;
     deskId: number;
-    bookedDay: string;
+    startDate: string;
+    endDate: string;
     desk: Desk;
     department: Department;
 }
