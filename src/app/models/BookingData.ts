@@ -1,5 +1,6 @@
 export class BookingData {
     employeeId: number;
-    bookedDay: string;
+    startDate: string;
+    endDate: string;
     deskId: number;
 } 

@@ -4,10 +4,7 @@
     </div>
     <div class="col-9">
         <div class="user-bookings">
-            <h2>Your Bookings</h2>
-            <div class="float-right mb-3">
-                <button class="btn btn-danger" (click)="cancelSelectedBooking()">Cancel Booking</button>
-            </div>
+            <h2>Your Booking History</h2>
             <div class="table-container">
                 <div class="table-row header">
                     <div class="table-cell">Desk Number</div>
@@ -15,7 +12,6 @@
                     <div class="table-cell">Department Name</div>
                     <div class="table-cell">Start Day</div>
                     <div class="table-cell">End Day</div>
-                    <div class="table-cell">Cancel Booking</div>
                 </div>
                 <div class="table-body">
                     <div *ngFor="let booking of bookings" class="table-row">
@@ -24,9 +20,6 @@
                         <div class="table-cell">{{ booking.department.departmentName }}</div>
                         <div class="table-cell">{{ booking.startDate }}</div>
                         <div class="table-cell">{{ booking.endDate }}</div>
-                        <div class="table-cell">
-                            <input type="checkbox" name="selectedBookings" (change)="toggleSelection($event.target.checked, booking)">
-                        </div>
                     </div>
                 </div>
             </div>

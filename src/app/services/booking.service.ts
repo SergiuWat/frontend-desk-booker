@@ -13,20 +13,31 @@ export class BookingService {
   constructor(private http: HttpClient) { }
 
   getAllBookingsByEmployeeEmail(employeeEmail: string): Observable<Booking[]> {
-    return this.http.get<Booking[]>(`${this.baseUrl}/getBookingByEmployeeEmail/${employeeEmail}`);
+    return this.http.get<Booking[]>(`${this.baseUrl}/getAllBookingsByEmployeeEmail/${employeeEmail}`);
   }
 
-  isDeskBooked(deskID: number, wantedDate: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.baseUrl}/isDeskBooked?deskID=${deskID}&wantedDate=${wantedDate}`);
+  getActiveBookingsByEmployeeEmail(employeeEmail: string): Observable<Booking[]> {
+    return this.http.get<Booking[]>(`${this.baseUrl}/getActiveBookingsByEmployeeEmail/${employeeEmail}`);
   }
 
-  getAllBookedDesksByDay(wantedDate: string): Observable<Booking[]> {
-    return this.http.get<Booking[]>(`${this.baseUrl}/getAllBookedDesksByDay?wantedDate=${wantedDate}`);
+  getBookingHistoryByEmployeeEmail(employeeEmail: string): Observable<Booking[]> {
+    return this.http.get<Booking[]>(`${this.baseUrl}/getBookingHistoryByEmployeeEmail/${employeeEmail}`);
+  }
+
+  isDeskBooked(deskID: number, wantedstartDate: string, wantedendDate): Observable<boolean> {
+    return this.http.get<boolean>(`${this.baseUrl}/isDeskBooked?deskID=${deskID}&wantedstartDate=${wantedstartDate}&wantedendDate=${wantedendDate}`);
+  }
+
+  getAllBookedDesksByDay( wantedstartDate: string, wantedendDate): Observable<Booking[]> {
+    return this.http.get<Booking[]>(`${this.baseUrl}/getAllBookedDesksByDay?wantedstartDate=${wantedstartDate}&wantedendDate=${wantedendDate}`);
   }
 
   addBooking(bookingData: BookingData): Observable<any>{ 
-    console.log(bookingData);  
     return this.http.post<any>(`${this.baseUrl}/addBooking`, bookingData);
+  }
+
+  cancelBooking(id: number): Observable<any>{
+    return this.http.delete<any>(`${this.baseUrl}/deleteBooking/${id}`);
   }
 
 }

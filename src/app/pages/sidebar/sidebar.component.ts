@@ -54,6 +54,10 @@ export class SidebarComponent {
     this.router.navigate(['bookings']);
   }
 
+  goToHistory(){
+    this.router.navigate(['history']);
+  }
+
   
   openFileDialog(): void {
     const fileInput = document.getElementById('fileInput') as HTMLInputElement;
