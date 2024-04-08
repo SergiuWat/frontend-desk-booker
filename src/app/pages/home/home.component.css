@@ -1,21 +1,13 @@
-.centered-buttons {
+/* .centered-buttons {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
   }
-  
+   */
   .big-button {
     display: block;
-    width: 400px;
-    height: 100px;
-    margin-bottom: 20px;
-    font-size: 1.5em;
-    background-color: #0cc;
-    color: black;
-    border: none;
-    border-radius: 10px;
     
   }
 
@@ -23,4 +15,176 @@
     background-color: #050577; 
     cursor: pointer;
     color: white;
+  } 
+
+/* 
+  
+  body {
+    height: 100vh;
+    margin: 0;
+    grid-gap: 0px;
+    column-gap:0;
+    display: grid;
+    place-items: center;
+    background: white;
+  }
+   */
+  .base {
+    width: 100px;
+    height: 200px;
+    margin-left: 520px;
+    margin-top: 150px;
+    perspective:450px;
+    justify-self: auto;
+  }
+  
+  .box {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    transform: translateZ( 150px) rotateX(-5deg) rotateY(-30deg);
+  }
+  
+  .box-face {
+    position: absolute;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+  }
+  
+  .box-face-front{
+    display: grid;
+    place-items: center;
+  }
+  .box-face-front,
+  .box-face-back {
+    width: 150px;
+    height: 200px;
+    line-height: 200px;
+  }
+  
+  .box-face-right,
+  .box-face-left {
+    width: 100px;
+    height: 200px;
+    left: 100px;
+    line-height: 200px;
+  }
+  
+  .box-face-top{
+    width: 150px;
+    height: 100px;
+    top: 50px;
+    line-height: 100px;
+  }
+  
+  .box-face-bottom {
+    width: 150px;
+    height: 100px;
+    top: 150px;
+    line-height: 100px;
+  }
+  
+  .box-face-front  { 
+    background: transparent linear-gradient(179deg, #3fddff 0%, #060606 100%) 0% 0% no-repeat padding-box;
+  }
+  
+  .box-face-right  {
+    background: transparent linear-gradient(179deg, #3fddff 0%, #060606 100%) 0% 0% no-repeat padding-box;
+  }
+  
+  .box-face-back   {
+   background: hsla(0, 0%, 0%, 0.7); 
+   }
+  
+  .box-face-left   {
+   background: hsla(0, 0%, 0%, 0.7); 
+   }
+  
+  .box-face-top    {
+    background: transparent linear-gradient(-25deg, #3fddff 5%, #060606 100%) 0% 0% no-repeat padding-box;
+  }
+  
+  .box-face-bottom {
+    background: hsla(0, 0%, 0%, 0.7); 
+    box-shadow: 10px 0px 100px rgba(0,0,0,0.4);
+  }
+  
+  .box-face-front  {
+   transform: rotateY(  0deg) translateZ( 50px); 
+   }
+  
+  .box-face-back   {
+   transform: rotateY(180deg) translateZ( 50px); 
+   }
+  
+  .box-face-right  {
+   transform: rotateY( 90deg) translateZ(0px); 
+   }
+  
+  .box-face-left   {
+   transform: rotateY(-90deg) translateZ(150px); 
+   }
+  
+  .box-face-top    {
+   transform: rotateX( 90deg) translateZ(100px); 
+   }
+  
+  .box-face-bottom {
+   transform: rotateX(-90deg) translateZ(0px); 
+   }
+  
+  .multi-button{ 
+    display: flex;
+    width: 150px;
+    height: 30px;
+    justify-content: center;
+  }
+  
+  .tapes{
+    height: 200px;
+    width: 150px;
+  }
+  
+  .tape {
+    position: absolute;
+    left: 20px;
+    width: 60%;
+    height: 25px;
+    background: transparent;
+    border: 3px double #e2ecef;
+  }
+  
+  .tape-4{
+    top: 10px;
+  }
+  
+  .tape-3{
+    top: 60px;
+  }
+  
+  .tape-2{
+    top: 110px;
+  }
+  
+  .tape-1{
+    top: 160px;
+  }
+  
+  .btn {
+    border: 3px double #e2ecef;
+    color: #e2ecef;
+    background: transparent;
+    width: 85%
+  }
+  .btn:focus {
+    outline: none;
+  }
+  .btn:not([disabled]):hover {
+    border: 3px double black;
+    color: black;
+    background: lightcyan;
   }
