@@ -113,10 +113,11 @@ handleEndDate() {
   }
   
 
-    updateDesks(){
-        this.deskService.getAllDesksByDepartmentId(this.departmentId).subscribe(data => {
-          this.desks = data;
-          this.isVisible = true;
-        });
+  updateDesks() {
+    this.deskService.getAllDesksByDepartmentId(this.departmentId).subscribe(data => {
+      this.desks = data;
+      this.isVisible = true;
+    });
   }
+  
 }

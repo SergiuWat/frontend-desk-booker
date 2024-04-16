@@ -47,7 +47,9 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
         this.value = '';
       } else {
         this.value = option;
+        console.log(option);
         const deskId = this.extractDeskId(option);
+        console.log(deskId)
         this.openBookingDialog(deskId);
       }
       this.onChange(this.value);
@@ -64,8 +66,6 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
 
     dialogRef.afterClosed().subscribe(result => {
         if (result === 'confirm') {
-          console.log(result);
-          console.log(deskId)
             this.addBooking(deskId);
         }
     });
