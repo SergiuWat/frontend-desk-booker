@@ -47,9 +47,7 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
         this.value = '';
       } else {
         this.value = option;
-        console.log(option);
         const deskId = this.extractDeskId(option);
-        console.log(deskId)
         this.openBookingDialog(deskId);
       }
       this.onChange(this.value);
@@ -109,7 +107,6 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
         });}
       });
     }
-    console.log(this.desks[20], this.desks[23])
   }
 
   async addBooking(deskId:number){
