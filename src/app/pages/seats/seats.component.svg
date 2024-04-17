@@ -95,6 +95,7 @@
     <line y2="202.5" transform="translate(748.5 350)" />
   </g>
 
+<ng-container *ngIf="desks && desks.length > 0">
   <g class="seat" [id]="'seat-' + desks[0].id"
   [class.selected]="isVisible && isSelected('seat-' + desks[0].id)"
   (click)="select('seat-' + desks[0].id)" 
@@ -728,5 +729,6 @@
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
 </g>
+</ng-container>
 
 </svg>

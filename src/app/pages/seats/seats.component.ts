@@ -65,6 +65,8 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
     dialogRef.afterClosed().subscribe(result => {
         if (result === 'confirm') {
             this.addBooking(deskId);
+        } else {
+          this.updateSeats();
         }
     });
 }
@@ -83,7 +85,6 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
 
   updateSeats(): void {
     this.resetIsDeskBookedMap();
-    console.log(this.isDeskBookedMap);
     if (this.desks) {
       this.bookingService.getAllBookedDesksByDay(this.sharedBookingData.bookingData.startDate, this.sharedBookingData.bookingData.endDate).subscribe(bookings =>{
         this.desks.forEach(desk =>{
@@ -96,7 +97,6 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
         })
         
         if(this.desks != undefined){
-          
           this.desks.forEach(desk => {
             const seatElement = document.getElementById(`seat-${desk.id}`);
             if (seatElement) {

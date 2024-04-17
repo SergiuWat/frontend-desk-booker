@@ -41,6 +41,16 @@ export class DeskbookingComponent implements OnInit{
       this.departmentId = +params['id'];
     });
     this.isVisible = false;
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    this.selectedDate = currentDate;
+    this.sharedBookingData.bookingData.startDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
+    this.sharedBookingData.bookingData.endDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
+    this.updateDesks();
+    if(this.seatsComponent != undefined){
+      this.seatsComponent.updateSeats();
+    }
+    
   }
 
   handleSelectedDate() {
