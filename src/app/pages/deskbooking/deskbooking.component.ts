@@ -55,6 +55,7 @@ export class DeskbookingComponent implements OnInit{
       this.updateDesks();
     } else {
       this.isVisible = false;
+      this.seatsComponent.resetWhenDateIsNotValid();
       this.snackBar.open('Please select a valid date', 'Close', {duration:3000})
     }
   }
@@ -71,6 +72,7 @@ export class DeskbookingComponent implements OnInit{
           this.updateDesks();
         }
     } else {
+        this.seatsComponent.resetWhenDateIsNotValid();
         this.snackBar.open('Please select a valid start date', 'Close', { duration: 3000 });
     }
 }
@@ -85,6 +87,7 @@ handleEndDate() {
         this.updateDesks();
     } else {
         this.isVisible = false;
+        this.seatsComponent.resetWhenDateIsNotValid();
         this.snackBar.open('Please select a valid end date', 'Close', { duration: 3000 });
     }
 }

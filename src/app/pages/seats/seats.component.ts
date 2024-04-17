@@ -85,6 +85,7 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
 
   updateSeats(): void {
     this.resetIsDeskBookedMap();
+    console.log(this.isDeskBookedMap);
     if (this.desks) {
       this.bookingService.getAllBookedDesksByDay(this.sharedBookingData.bookingData.startDate, this.sharedBookingData.bookingData.endDate).subscribe(bookings =>{
         this.desks.forEach(desk =>{
@@ -95,15 +96,20 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
             this.isDeskBookedMap.set(desk.id, false);
           }
         })
-        this.desks.forEach(desk => {
-          const seatElement = document.getElementById(`seat-${desk.deskNumber}`);
-          if (seatElement) {
-              const isAvailable = this.checkDeskAvailability(desk.deskNumber);
-              seatElement.style.pointerEvents = isAvailable ? 'none' : 'auto';
-          }
-        });
+        
+        if(this.desks != undefined){
+          
+          this.desks.forEach(desk => {
+            const seatElement = document.getElementById(`seat-${desk.id}`);
+            if (seatElement) {
+                const isAvailable = this.checkDeskAvailability(desk.id);
+                seatElement.style.fill = '#0cc';
+                seatElement.style.pointerEvents = isAvailable ? 'none' : 'auto';
+            }
+        });}
       });
     }
+    console.log(this.desks[20], this.desks[23])
   }
 
   async addBooking(deskId:number){
@@ -152,12 +158,27 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
     this.onChange(this.value);
     
     this.desks.forEach(desk => {
-      const seatElement = document.getElementById(`seat-${desk.deskNumber}`);
+      const seatElement = document.getElementById(`seat-${desk.id}`);
       if (seatElement) {
         seatElement.style.pointerEvents = 'none';
         seatElement.style.fill = '#0cc'
       }
     });
   }
+
+  public resetWhenDateIsNotValid(): void {
+    this.value = '';
+    this.touched = false;
+    this.onChange(this.value);
+    
+    this.desks.forEach(desk => {
+      const seatElement = document.getElementById(`seat-${desk.id}`);
+      if (seatElement) {
+        seatElement.style.pointerEvents = 'none';
+        seatElement.style.fill = '#FFF'
+      }
+    });
+  }
+
   
 }

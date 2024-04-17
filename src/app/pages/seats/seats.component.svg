@@ -139,7 +139,7 @@
         clip-path="url(#clip-2)"
       />
     </g>
-    <g [id]="'chair-' + desks[0].id" transform="translate(169 30)">
+    <g [id]="'chair-' + desks[1].id" transform="translate(169 30)">
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
@@ -585,7 +585,7 @@
     </g>
 </g>
 
-<g class="seat" id="'seat-' + desks[20].id"
+<g class="seat" [id]="'seat-' + desks[20].id"
   [class.selected]="isVisible && isSelected('seat-' + desks[20].id)"
   (click)="select('seat-' + desks[20].id)" 
   [style.fill]="isSelected('seat-' + desks[20].id) ? '#4cdf0c' : (checkDeskAvailability(desks[20].id) ? 'red' : '#0cc')"
@@ -657,7 +657,7 @@
     </g>
 </g>
 
-<g class="seat" id="'seat-' + desks[23].id"
+<g class="seat" [id]="'seat-' + desks[23].id"
   [class.selected]="isVisible && isSelected('seat-' + desks[23].id)"
   (click)="select('seat-' + desks[23].id)" 
   [style.fill]="isSelected('seat-' + desks[23].id) ? '#4cdf0c' : (checkDeskAvailability(desks[23].id) ? 'red' : '#0cc')"
