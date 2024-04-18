@@ -15,7 +15,7 @@ import { SeatsComponent } from '../seats/seats.component';
   templateUrl: './deskbooking.component.html',
   styleUrls: ['./deskbooking.component.css']
 })
-export class DeskbookingComponent implements OnInit{
+export class DeskbookingComponent implements OnInit {
   @ViewChild(SeatsComponent) seatsComponent: SeatsComponent;
   selectedDate: Date;
   startDate: Date;
@@ -26,14 +26,14 @@ export class DeskbookingComponent implements OnInit{
   bookingType: string = 'oneDay'; // Default to 'oneDay'
 
   constructor(private route: ActivatedRoute,
-              private datePipe: DatePipe, 
-              private sharedBookingData: BookingDataService, 
-              private snackBar: MatSnackBar,
-              private bookingService: BookingService,
-              private deskService: DeskService,
-              private bookingDataService: BookingDataService,
-              private employeeService: EmployeeService){
-    
+    private datePipe: DatePipe,
+    private sharedBookingData: BookingDataService,
+    private snackBar: MatSnackBar,
+    private bookingService: BookingService,
+    private deskService: DeskService,
+    private bookingDataService: BookingDataService,
+    private employeeService: EmployeeService) {
+
   }
 
   ngOnInit(): void {
@@ -47,7 +47,7 @@ export class DeskbookingComponent implements OnInit{
     this.sharedBookingData.bookingData.startDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
     this.sharedBookingData.bookingData.endDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
     this.updateDesks();
-    if(this.seatsComponent != undefined){
+    if (this.seatsComponent != undefined) {
       this.seatsComponent.updateSeats();
     }
   }
@@ -59,13 +59,13 @@ export class DeskbookingComponent implements OnInit{
     if (this.selectedDate >= currentDate) {
       this.sharedBookingData.bookingData.startDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
       this.sharedBookingData.bookingData.endDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
-      this.bookingDataService.bookingData.startDate= this.sharedBookingData.bookingData.startDate;
-      this.bookingDataService.bookingData.endDate= this.sharedBookingData.bookingData.endDate;
+      this.bookingDataService.bookingData.startDate = this.sharedBookingData.bookingData.startDate;
+      this.bookingDataService.bookingData.endDate = this.sharedBookingData.bookingData.endDate;
       this.updateDesks();
     } else {
       this.isVisible = false;
       this.seatsComponent.resetWhenDateIsNotValid();
-      this.snackBar.open('Please select a valid date', 'Close', {duration:3000})
+      this.snackBar.open('Please select a valid date', 'Close', { duration: 3000 })
     }
   }
 
@@ -73,32 +73,38 @@ export class DeskbookingComponent implements OnInit{
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
 
-    if (this.startDate && this.startDate >= currentDate && this.startDate <= this.endDate) {
-        this.sharedBookingData.bookingData.startDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd');
-        this.bookingDataService.bookingData.startDate = this.sharedBookingData.bookingData.startDate;
-        if(this.endDate !== null){
-          this.updateDesks();
-        }
-    } else {
-        this.seatsComponent.resetWhenDateIsNotValid();
-        this.snackBar.open('Please select a valid start date', 'Close', { duration: 3000 });
-    }
-}
+    if (this.startDate && this.startDate >= currentDate) {
+      this.sharedBookingData.bookingData.startDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd');
+      this.bookingDataService.bookingData.startDate = this.sharedBookingData.bookingData.startDate;
 
-handleEndDate() {
+      if (this.startDate >= this.endDate) {
+        this.endDate = this.startDate;
+        this.sharedBookingData.bookingData.startDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
+        this.sharedBookingData.bookingData.endDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
+        this.updateDesks();
+      } else {
+        this.updateDesks();
+      }
+    } else {
+      this.seatsComponent.resetWhenDateIsNotValid();
+      this.snackBar.open('Please select a valid start date', 'Close', { duration: 3000 });
+    }
+  }
+
+  handleEndDate() {
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
 
     if (this.endDate && this.endDate >= currentDate && this.endDate >= this.startDate) {
-        this.sharedBookingData.bookingData.endDate = this.datePipe.transform(this.endDate, 'yyyy-MM-dd');
-        this.bookingDataService.bookingData.endDate = this.sharedBookingData.bookingData.endDate;
-        this.updateDesks();
+      this.sharedBookingData.bookingData.endDate = this.datePipe.transform(this.endDate, 'yyyy-MM-dd');
+      this.bookingDataService.bookingData.endDate = this.sharedBookingData.bookingData.endDate;
+      this.updateDesks();
     } else {
-        this.isVisible = false;
-        this.seatsComponent.resetWhenDateIsNotValid();
-        this.snackBar.open('Please select a valid end date', 'Close', { duration: 3000 });
+      this.isVisible = false;
+      this.seatsComponent.resetWhenDateIsNotValid();
+      this.snackBar.open('Please select a valid end date', 'Close', { duration: 3000 });
     }
-}
+  }
 
 
   isDeskBooked(desk: Desk): Observable<boolean> {
@@ -113,7 +119,7 @@ handleEndDate() {
     this.selectedDate = currentDate;
     this.startDate = currentDate;
     this.endDate = currentDate;
-    
+
     this.sharedBookingData.bookingData.startDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
     this.sharedBookingData.bookingData.endDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
 
@@ -121,22 +127,22 @@ handleEndDate() {
     this.deskService.getAllDesksByDepartmentId(this.departmentId).subscribe(data => {
       this.desks = data;
       this.isVisible = true;
-      if(this.seatsComponent !== undefined){
+      if (this.seatsComponent !== undefined) {
         this.seatsComponent.updateSeats();
       }
     });
-    
-}
 
-
-  async addBooking(deskId:number){
-    var response = await this.employeeService.getEmployeeInfo().toPromise()
-    this.bookingDataService.bookingData.employeeId=response.id;
-    this.bookingDataService.bookingData.deskId=deskId;
-    this.bookingService.addBooking(this.bookingDataService.bookingData).subscribe();
-    window.location.reload();    
   }
-  
+
+
+  async addBooking(deskId: number) {
+    var response = await this.employeeService.getEmployeeInfo().toPromise()
+    this.bookingDataService.bookingData.employeeId = response.id;
+    this.bookingDataService.bookingData.deskId = deskId;
+    this.bookingService.addBooking(this.bookingDataService.bookingData).subscribe();
+    window.location.reload();
+  }
+
 
   updateDesks() {
     this.deskService.getAllDesksByDepartmentId(this.departmentId).subscribe(data => {
@@ -144,5 +150,5 @@ handleEndDate() {
       this.isVisible = true;
     });
   }
-  
+
 }
