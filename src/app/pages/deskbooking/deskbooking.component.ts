@@ -50,7 +50,6 @@ export class DeskbookingComponent implements OnInit{
     if(this.seatsComponent != undefined){
       this.seatsComponent.updateSeats();
     }
-    
   }
 
   handleSelectedDate() {
@@ -71,7 +70,6 @@ export class DeskbookingComponent implements OnInit{
   }
 
   handleStartDate() {
-    // Check if the start date is valid
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
 
@@ -108,12 +106,26 @@ handleEndDate() {
   }
 
   resetDesks() {
-    this.selectedDate = null;
-    this.startDate = null;
-    this.endDate = null;
-    this.desks = [];
-    this.isVisible = false;
     this.seatsComponent.resetSeats();
+    this.isVisible = true;
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    this.selectedDate = currentDate;
+    this.startDate = currentDate;
+    this.endDate = currentDate;
+    
+    this.sharedBookingData.bookingData.startDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
+    this.sharedBookingData.bookingData.endDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
+
+    this.bookingDataService.bookingData.startDate = this.sharedBookingData.bookingData.startDate;
+    this.deskService.getAllDesksByDepartmentId(this.departmentId).subscribe(data => {
+      this.desks = data;
+      this.isVisible = true;
+      if(this.seatsComponent !== undefined){
+        this.seatsComponent.updateSeats();
+      }
+    });
+    
 }
 
 

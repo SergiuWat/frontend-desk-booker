@@ -90,7 +90,7 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
         this.desks.forEach(desk =>{
           var obj = bookings.find((booking) => (booking.deskId === desk.id && ( this.datePipe.transform(booking.startDate, 'yyyy-MM-dd') <= this.sharedBookingData.bookingData.endDate ) && ( this.datePipe.transform(booking.endDate, 'yyyy-MM-dd') >= this.sharedBookingData.bookingData.startDate ) && ( this.datePipe.transform(booking.startDate))))
           if(obj != undefined){
-            this.isDeskBookedMap.set(desk.id, true);
+            this.isDeskBookedMap.set(desk.id, true) ;
           } else {
             this.isDeskBookedMap.set(desk.id, false);
           }
@@ -101,7 +101,7 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
             const seatElement = document.getElementById(`seat-${desk.id}`);
             if (seatElement) {
                 const isAvailable = this.checkDeskAvailability(desk.id);
-                seatElement.style.fill = '#0cc';
+                seatElement.style.fill = isAvailable ? 'red' : '#0cc';
                 seatElement.style.pointerEvents = isAvailable ? 'none' : 'auto';
             }
         });}
