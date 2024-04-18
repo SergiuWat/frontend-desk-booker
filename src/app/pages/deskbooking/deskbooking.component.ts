@@ -73,7 +73,7 @@ export class DeskbookingComponent implements OnInit{
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
 
-    if (this.startDate && this.startDate >= currentDate) {
+    if (this.startDate && this.startDate >= currentDate && this.startDate <= this.endDate) {
         this.sharedBookingData.bookingData.startDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd');
         this.bookingDataService.bookingData.startDate = this.sharedBookingData.bookingData.startDate;
         if(this.endDate !== null){
