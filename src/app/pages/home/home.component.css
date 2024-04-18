@@ -17,34 +17,54 @@
     color: white;
   } 
 
-/* 
-  
-  body {
-    height: 100vh;
+
+  body, html {
+    height: 91.295vh;
+    width: 99.5vw;
     margin: 0;
-    grid-gap: 0px;
-    column-gap:0;
-    display: grid;
-    place-items: center;
-    background: white;
-  }
-   */
+    padding: 0;
+}
+
+  
+  
   .base {
     width: 100px;
     height: 200px;
-    margin-left: 520px;
+    margin-left: 52%;
     margin-top: 150px;
     perspective:450px;
     justify-self: auto;
   }
   
+  .page-background {
+    position: relative;
+  }
+
+  .page-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .page-background {
+    background-image: url('../../../assets/afi-brasov-2.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+
+
   .box {
     width: 200px;
     height: 200px;
     position: relative;
     transform-style: preserve-3d;
     transition: transform 1s;
-    transform: translateZ( 150px) rotateX(-5deg) rotateY(-30deg);
+    transform: translateZ( 150px) rotateX(-30deg) rotateY(0deg);
   }
   
   .box-face {
@@ -71,7 +91,7 @@
     width: 100px;
     height: 200px;
     left: 100px;
-    line-height: 200px;
+    line-height: 00px;
   }
   
   .box-face-top{
@@ -89,11 +109,11 @@
   }
   
   .box-face-front  { 
-    background: transparent linear-gradient(179deg, #3fddff 0%, #060606 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(179deg, #E5E4E2 0%, #818589 100%) 0% 0% no-repeat padding-box;
   }
   
   .box-face-right  {
-    background: transparent linear-gradient(179deg, #3fddff 0%, #060606 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(179deg, #E5E4E2 0%, #818589 100%) 0% 0% no-repeat padding-box;
   }
   
   .box-face-back   {
@@ -101,11 +121,11 @@
    }
   
   .box-face-left   {
-   background: hsla(0, 0%, 0%, 0.7); 
+    background: transparent linear-gradient(179deg, #E5E4E2 0%, #818589 100%) 0% 0% no-repeat padding-box;
    }
   
   .box-face-top    {
-    background: transparent linear-gradient(-25deg, #3fddff 5%, #060606 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(0deg, #E5E4E2 0%, #818589 100%) 0% 0% no-repeat padding-box;
   }
   
   .box-face-bottom {
@@ -178,7 +198,8 @@
     border: 3px double #e2ecef;
     color: #e2ecef;
     background: transparent;
-    width: 85%
+    width: 85%;
+    padding: 0px 10px;
   }
   .btn:focus {
     outline: none;
