@@ -7,6 +7,7 @@
   height="556"
   viewBox="0 0 945.5 556"
 >
+
   <defs>
     <clipPath id="clip">
       <use xlink:href="#fill" />
@@ -36,7 +37,7 @@
 
   <g class="wall" >
     <rect width="945" height="556" stroke="none" />
-    <rect x="2.5" y="2.5" width="940" height="551" fill="none" />
+    <rect x="2.5" y="2.5" width="940" height="551" fill="#e2ecef" />
   </g>
 
   <g class="separators">
