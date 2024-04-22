@@ -19,9 +19,9 @@
                 </div>
                 <div class="table-body">
                     <div *ngFor="let booking of bookings" class="table-row">
-                        <div class="table-cell">{{ booking.desk.deskNumber }}</div>
-                        <div class="table-cell">{{ booking.department.floor.floorLevel }}</div>
-                        <div class="table-cell">{{ booking.department.departmentName }}</div>
+                        <div class="table-cell">{{ booking.desk?.deskNumber }}</div>
+                        <div class="table-cell">{{ booking.department?.floor.floorLevel }}</div>
+                        <div class="table-cell">{{ booking.department?.departmentName }}</div>
                         <div class="table-cell">{{ booking.startDate }}</div>
                         <div class="table-cell">{{ booking.endDate }}</div>
                         <div class="table-cell">
