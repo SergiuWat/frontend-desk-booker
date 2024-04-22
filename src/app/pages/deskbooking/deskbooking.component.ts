@@ -79,8 +79,10 @@ export class DeskbookingComponent implements OnInit {
 
       if (this.startDate >= this.endDate) {
         this.endDate = this.startDate;
-        this.sharedBookingData.bookingData.startDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
-        this.sharedBookingData.bookingData.endDate = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd');
+        this.sharedBookingData.bookingData.startDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd');
+        this.sharedBookingData.bookingData.endDate = this.datePipe.transform(this.endDate, 'yyyy-MM-dd');
+        this.bookingDataService.bookingData.startDate = this.sharedBookingData.bookingData.startDate;
+        this.bookingDataService.bookingData.endDate = this.sharedBookingData.bookingData.endDate;
         this.updateDesks();
       } else {
         this.updateDesks();
@@ -96,7 +98,9 @@ export class DeskbookingComponent implements OnInit {
     currentDate.setHours(0, 0, 0, 0);
 
     if (this.endDate && this.endDate >= currentDate && this.endDate >= this.startDate) {
+      this.sharedBookingData.bookingData.startDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd');
       this.sharedBookingData.bookingData.endDate = this.datePipe.transform(this.endDate, 'yyyy-MM-dd');
+      this.bookingDataService.bookingData.startDate = this.sharedBookingData.bookingData.startDate;
       this.bookingDataService.bookingData.endDate = this.sharedBookingData.bookingData.endDate;
       this.updateDesks();
     } else {
