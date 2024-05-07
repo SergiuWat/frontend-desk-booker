@@ -13,8 +13,9 @@
                     <div class="table-cell">Start Day</div>
                     <div class="table-cell">End Day</div>
                 </div>
+                
                 <div class="table-body">
-                    <div *ngFor="let booking of bookings" class="table-row">
+                    <div *ngFor="let booking of paginatedBookings" class="table-row">
                         <div class="table-cell">{{ booking.desk?.deskNumber }}</div>
                         <div class="table-cell">{{ booking.department?.floor.floorLevel }}</div>
                         <div class="table-cell">{{ booking.department?.departmentName }}</div>
@@ -22,6 +23,15 @@
                         <div class="table-cell">{{ booking.endDate }}</div>
                     </div>
                 </div>
+            </div>
+            
+            <div class="float-right mb-3" style="margin-top: 10px;">
+                <button class="btn btn-secondary" [disabled]="currentPage === 1" (click)="prevPage()" style="margin-right: 10px;">Previous</button>
+                <button class="btn btn-secondary" [disabled]="currentPage === totalpages || totalpages === 0" (click)="nextPage()">Next</button>
+            </div>
+            
+            <div class="pagination-info">
+                Page {{ currentPage }} of {{ totalpages }}
             </div>
         </div>
     </div>
