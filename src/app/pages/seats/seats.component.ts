@@ -64,9 +64,9 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
 
     dialogRef.afterClosed().subscribe(result => {
         if (result === 'confirm') {
-          console.log(result);
-          console.log(deskId)
             this.addBooking(deskId);
+        } else {
+          this.updateSeats();
         }
     });
 }
@@ -90,18 +90,21 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
         this.desks.forEach(desk =>{
           var obj = bookings.find((booking) => (booking.deskId === desk.id && ( this.datePipe.transform(booking.startDate, 'yyyy-MM-dd') <= this.sharedBookingData.bookingData.endDate ) && ( this.datePipe.transform(booking.endDate, 'yyyy-MM-dd') >= this.sharedBookingData.bookingData.startDate ) && ( this.datePipe.transform(booking.startDate))))
           if(obj != undefined){
-            this.isDeskBookedMap.set(desk.id, true);
+            this.isDeskBookedMap.set(desk.id, true) ;
           } else {
             this.isDeskBookedMap.set(desk.id, false);
           }
         })
-        this.desks.forEach(desk => {
-          const seatElement = document.getElementById(`seat-${desk.deskNumber}`);
-          if (seatElement) {
-              const isAvailable = this.checkDeskAvailability(desk.deskNumber);
-              seatElement.style.pointerEvents = isAvailable ? 'none' : 'auto';
-          }
-        });
+        
+        if(this.desks != undefined){
+          this.desks.forEach(desk => {
+            const seatElement = document.getElementById(`seat-${desk.id}`);
+            if (seatElement) {
+                const isAvailable = this.checkDeskAvailability(desk.id);
+                seatElement.style.fill = isAvailable ? 'red' : '#0cc';
+                seatElement.style.pointerEvents = isAvailable ? 'none' : 'auto';
+            }
+        });}
       });
     }
   }
@@ -152,12 +155,27 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
     this.onChange(this.value);
     
     this.desks.forEach(desk => {
-      const seatElement = document.getElementById(`seat-${desk.deskNumber}`);
+      const seatElement = document.getElementById(`seat-${desk.id}`);
       if (seatElement) {
         seatElement.style.pointerEvents = 'none';
         seatElement.style.fill = '#0cc'
       }
     });
   }
+
+  public resetWhenDateIsNotValid(): void {
+    this.value = '';
+    this.touched = false;
+    this.onChange(this.value);
+    
+    this.desks.forEach(desk => {
+      const seatElement = document.getElementById(`seat-${desk.id}`);
+      if (seatElement) {
+        seatElement.style.pointerEvents = 'none';
+        seatElement.style.fill = '#FFF'
+      }
+    });
+  }
+
   
 }

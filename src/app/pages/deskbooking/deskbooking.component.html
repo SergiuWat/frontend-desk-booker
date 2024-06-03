@@ -1,9 +1,10 @@
-<div class="row">
+<div class="row" style="background-color: #f0f0f0; height: 91.25vh;">
     <div class="col-2">
         <app-sidebar></app-sidebar> 
     </div>
 
     <div class="col">
+        <button class="btn btn-primary" (click)="goToHome()">Home</button>
         <h4>Please choose a period: </h4>
         <mat-radio-group [(ngModel)]="bookingType" (change)="resetDesks()">
             <mat-radio-button value="oneDay">Book for one day</mat-radio-button>

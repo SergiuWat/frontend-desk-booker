@@ -77,31 +77,56 @@ export class SidebarComponent {
     const reader = new FileReader();
     reader.readAsDataURL(this.selectedFile as File);
     reader.onload = () => {
-      this.sanitizedImageData = reader.result.slice(22, reader.result.toString().length);
-      this.employeeToUpdate.imageData = this.sanitizedImageData;
-      this.employeeToUpdate.id = this.employee.id;
-      this.employeeToUpdate.fullName = this.employee.fullName;
-      this.employeeToUpdate.email = this.employee.email;
-      this.employeeToUpdate.rol = this.employee.rol;
-      this.employeeToUpdate.team = this.employee.team;
-      this.employeeToUpdate.departmentName = this.employee.department.departmentName;
-      this.employeeToUpdate.floorId = this.employee.department.floor.id;
-      this.employeeToUpdate.contact = this.employee.contact;
-      
-      this.employeeService.updateEmployee(this.employeeToUpdate).subscribe(response => {
-        console.log(response);
-        window.location.reload();
-      });
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d')!;
+        const maxSize = 200;
+        let width = img.width;
+        let height = img.height;
+        
+        if (width > height) {
+          if (width > maxSize) {
+            height *= maxSize / width;
+            width = maxSize;
+          }
+        } else {
+          if (height > maxSize) {
+            width *= maxSize / height;
+            height = maxSize;
+          }
+        }
+  
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(img, 0, 0, width, height);
+  
+        const resizedImageData = canvas.toDataURL('image/jpeg');
+        this.employeeToUpdate.imageData = resizedImageData.split(',')[1]; 
+        this.employeeToUpdate.id = this.employee.id;
+        this.employeeToUpdate.fullName = this.employee.fullName;
+        this.employeeToUpdate.email = this.employee.email;
+        this.employeeToUpdate.rol = this.employee.rol;
+        this.employeeToUpdate.team = this.employee.team;
+        this.employeeToUpdate.departmentName = this.employee.department.departmentName;
+        this.employeeToUpdate.floorId = this.employee.department.floor.id;
+        this.employeeToUpdate.contact = this.employee.contact;
+        this.employeeService.updateEmployee(this.employeeToUpdate).subscribe(response => {
+          window.location.reload();
+        });
+      };
+      img.src = reader.result as string;
     };
   }
+  
 
   onMouseEnter() {
-    console.log('Mouse entered');
+    //console.log('Mouse entered');
     this.showChangeImageText = true;
   }
   
   onMouseLeave() {
-    console.log('Mouse left');
+    //console.log('Mouse left');
     this.showChangeImageText = false;
   }
 }
