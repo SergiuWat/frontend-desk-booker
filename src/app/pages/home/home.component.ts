@@ -72,6 +72,6 @@ export class HomeComponent {
   }
 
   navigateToDepartments(floorId: number) {
-    this.router.navigate(['/desk-booking', this.employee.department.id]);
+    this.router.navigate(['/desk-booking', floorId]);
   }
 }

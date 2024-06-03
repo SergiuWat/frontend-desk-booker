@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, map, of } from 'rxjs';
 import { Desk } from 'src/app/models/Desk';
 import { BookingDataService } from 'src/app/services/booking-data.service';
@@ -32,7 +32,8 @@ export class DeskbookingComponent implements OnInit {
     private bookingService: BookingService,
     private deskService: DeskService,
     private bookingDataService: BookingDataService,
-    private employeeService: EmployeeService) {
+    private employeeService: EmployeeService,
+    private router: Router) {
 
   }
 
@@ -153,6 +154,10 @@ export class DeskbookingComponent implements OnInit {
       this.desks = data;
       this.isVisible = true;
     });
+  }
+
+  goToHome(){
+    this.router.navigate(['/home']);
   }
 
 }

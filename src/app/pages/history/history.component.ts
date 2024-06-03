@@ -1,4 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Booking } from 'src/app/models/Booking';
 import { BookingService } from 'src/app/services/booking.service';
 import { DepartmentService } from 'src/app/services/department.service';
@@ -18,7 +19,7 @@ export class HistoryComponent implements AfterViewInit {
   bookings: Booking[];
   paginatedBookings: Booking[];
 
-  constructor(private bookingService: BookingService, private employeeService: EmployeeService, private deskService: DeskService, private departmentService: DepartmentService) {
+  constructor(private bookingService: BookingService, private employeeService: EmployeeService, private deskService: DeskService, private departmentService: DepartmentService, private router: Router) {
 
   }
 
@@ -60,6 +61,10 @@ export class HistoryComponent implements AfterViewInit {
   prevPage() {
     this.currentPage--;
     this.updatePaginatedBookings();
+  }
+
+  goToHome(){
+    this.router.navigate(['/home']);
   }
 
 }

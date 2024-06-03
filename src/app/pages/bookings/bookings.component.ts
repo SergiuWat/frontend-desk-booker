@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Booking } from 'src/app/models/Booking';
 import { BookingData } from 'src/app/models/BookingData';
 import { BookingService } from 'src/app/services/booking.service';
 import { DepartmentService } from 'src/app/services/department.service';
 import { DeskService } from 'src/app/services/desk.service';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { CancelDialogComponent } from '../cancel-dialog/cancel-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bookings',
@@ -21,7 +24,7 @@ export class BookingsComponent implements OnInit {
   selectedBookings: Booking[] = [];
   paginatedBookings: Booking[];
 
-  constructor(private bookingService: BookingService, private employeeService: EmployeeService, private deskService: DeskService, private departmentService: DepartmentService){
+  constructor(private bookingService: BookingService, private employeeService: EmployeeService, private deskService: DeskService, private departmentService: DepartmentService, private dialog: MatDialog, private router: Router) {
 
   }
 
@@ -57,7 +60,7 @@ export class BookingsComponent implements OnInit {
         this.bookings.forEach(booking => {
           booking.startDate = booking.startDate.split('T')[0];
           booking.endDate = booking.endDate.split('T')[0];
-          
+
           this.deskService.getDeskById(booking.deskId.toString()).subscribe(desk => {
             booking.desk = desk;
 
@@ -78,34 +81,37 @@ export class BookingsComponent implements OnInit {
     }
   }
 
-  cancelSelectedBooking() {
+
+  private openCancelDialog(): void {
+    let confirmedCount = 0;
+    let dialogCount = this.selectedBookings.length;
+  
     this.selectedBookings.forEach(booking => {
-      this.bookingService.cancelBooking(booking.id).subscribe((response: string) =>{
-        const currentDate = new Date();
-        currentDate.setHours(0, 0, 0, 0); 
-
-        const bookingStartDate = new Date(booking.startDate);
-        bookingStartDate.setHours(0, 0, 0, 0);
-
-        if(currentDate >= bookingStartDate){
-
-          const startDate = new Date(booking.startDate);
-          currentDate.setDate(currentDate.getDate() + 1);
-          const endDate = currentDate;
-
-          const newBooking: BookingData = {
-            employeeId: booking.employeeId,
-            startDate: startDate.toISOString().split('T')[0],
-            endDate: endDate.toISOString().split('T')[0],
-            deskId: booking.deskId
-          };
-
-          this.bookingService.addBooking(newBooking).subscribe();
+      const dialogRef = this.dialog.open(CancelDialogComponent, {
+        width: '600px',
+        height: '350px',
+        data: { booking }
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        if (result === 'confirm') {
+          confirmedCount++;
         }
-      }
-      )});
-
-    this.selectedBookings = [];
-    window.location.reload();
+        
+        dialogCount--;
+  
+        if (dialogCount === 0 && confirmedCount > 0) {
+          window.location.reload();
+        }
+      });
+    });
+  }
+  
+  cancelSelectedBooking() {
+    this.openCancelDialog();
+  }
+  
+  goToHome(){
+    this.router.navigate(['/home']);
   }
 }

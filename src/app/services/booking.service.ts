@@ -33,7 +33,7 @@ export class BookingService {
   }
 
   addBooking(bookingData: BookingData): Observable<string>{ 
-    return this.http.post<string>(`${this.baseUrl}/addBooking`, bookingData);
+    return this.http.post<string>(`${this.baseUrl}/addBooking`, bookingData, { responseType: 'text' as 'json' });
   }
 
   cancelBooking(id: number): Observable<string>{
