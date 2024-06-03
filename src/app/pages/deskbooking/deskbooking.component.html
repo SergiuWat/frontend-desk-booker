@@ -3,7 +3,7 @@
         <app-sidebar></app-sidebar> 
     </div>
 
-    <div class="col">
+    <div class="col order-2 mt-5">
         <button class="btn btn-primary" (click)="goToHome()">Home</button>
         <h4>Please choose a period: </h4>
         <mat-radio-group [(ngModel)]="bookingType" (change)="resetDesks()">
@@ -22,7 +22,7 @@
         </div>
     
         <div *ngIf="bookingType === 'period'">
-            <mat-form-field style="margin-right: 20px;">
+            <mat-form-field style="margin-right: 1px;">
                 <mat-label>Start Date</mat-label>
                 <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate" (dateChange)="handleStartDate()">
                 <mat-hint>MM/DD/YYYY</mat-hint>
@@ -37,7 +37,10 @@
                 <mat-datepicker #endPicker></mat-datepicker>
             </mat-form-field>
         </div>
-        
+    </div> 
+    <div class="col order-1">
         <app-seats [desks]="desks" [isVisible]="isVisible"></app-seats>
     </div>
+        
+    
 </div>

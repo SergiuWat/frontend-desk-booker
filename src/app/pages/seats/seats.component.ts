@@ -8,6 +8,10 @@ import { BookingService } from 'src/app/services/booking.service';
 import { DeskService } from 'src/app/services/desk.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { BookingdialogComponent } from '../bookingdialog/bookingdialog.component';
+import { DeskPositions } from 'src/app/models/DeskPositions';
+import { DeskpositionsService } from 'src/app/services/deskpositions.service';
+import { Separators } from 'src/app/models/Separators';
+import { SeparatorsService } from 'src/app/services/separators.service';
 
 @Component({
   selector: 'app-seats',
@@ -25,16 +29,33 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
   @Input() isVisible: boolean = false;
   @Input() desks: Desk[];
   isDeskBookedMap: Map<number, boolean> = new Map<number, boolean>();
-
+  deskPositions: DeskPositions[];
+  separators: Separators[];
   constructor(private bookingService: BookingService,
               private employeeService: EmployeeService,
               private bookingDataService: BookingDataService,
               private datePipe: DatePipe, 
               private sharedBookingData: BookingDataService,
+              private deskPositionsService: DeskpositionsService,
+              private separatorsService: SeparatorsService,
               private dialog: MatDialog){
 
-    }
+            }
 
+    
+    
+  async ngOnInit(){
+    var employeeInfo = await this.employeeService.getEmployeeInfo().toPromise();
+    this.deskPositionsService.getAllDeskPositionsByDepartment(employeeInfo.department.id).subscribe(response => {
+      this.deskPositions = response;
+      console.log();
+    });
+    this.separatorsService.getSeparatorsByDepartmentId(employeeInfo.department.id).subscribe(response => {
+      this.separators = response;
+      console.log();
+    });
+
+  }
   public onTouched = () => {};
   public onChange = (value: string) => {};
   public touched: boolean = false;
