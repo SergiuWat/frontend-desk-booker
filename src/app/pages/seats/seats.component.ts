@@ -12,6 +12,7 @@ import { DeskPositions } from 'src/app/models/DeskPositions';
 import { DeskpositionsService } from 'src/app/services/deskpositions.service';
 import { Separators } from 'src/app/models/Separators';
 import { SeparatorsService } from 'src/app/services/separators.service';
+import { ActivatedRoute, Route } from '@angular/router';
 
 @Component({
   selector: 'app-seats',
@@ -31,6 +32,8 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
   isDeskBookedMap: Map<number, boolean> = new Map<number, boolean>();
   deskPositions: DeskPositions[];
   separators: Separators[];
+  departmentId: number;
+
   constructor(private bookingService: BookingService,
               private employeeService: EmployeeService,
               private bookingDataService: BookingDataService,
@@ -38,19 +41,22 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
               private sharedBookingData: BookingDataService,
               private deskPositionsService: DeskpositionsService,
               private separatorsService: SeparatorsService,
-              private dialog: MatDialog){
+              private dialog: MatDialog,
+              private route: ActivatedRoute){
 
             }
 
     
     
   async ngOnInit(){
-    var employeeInfo = await this.employeeService.getEmployeeInfo().toPromise();
-    this.deskPositionsService.getAllDeskPositionsByDepartment(employeeInfo.department.id).subscribe(response => {
+    this.route.params.subscribe(params => {
+      this.departmentId = +params['id'];
+    });
+    this.deskPositionsService.getAllDeskPositionsByDepartment(this.departmentId).subscribe(response => {
       this.deskPositions = response;
       console.log();
     });
-    this.separatorsService.getSeparatorsByDepartmentId(employeeInfo.department.id).subscribe(response => {
+    this.separatorsService.getSeparatorsByDepartmentId(this.departmentId).subscribe(response => {
       this.separators = response;
       console.log();
     });

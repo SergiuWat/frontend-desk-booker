@@ -26,7 +26,7 @@ export class HomeComponent {
   disableFloor3Button: boolean = false;
   disableFloor4Button: boolean = false;
 
-  constructor(private route: ActivatedRoute,private router: Router, private employeeService: EmployeeService, private departmentsService: DepartmentService, private sharedbookingData: BookingDataService) {}
+  constructor(private route: ActivatedRoute,private router: Router, private employeeService: EmployeeService, private departmentsService: DepartmentService, private sharedbookingData: BookingDataService, private departmentService: DepartmentService) {}
 
   ngOnInit(){
 
@@ -72,6 +72,12 @@ export class HomeComponent {
   }
 
   navigateToDepartments(floorId: number) {
-    this.router.navigate(['/desk-booking', floorId]);
+    this.departmentService.getDepartmentsByFloorID(floorId.toString()).subscribe(departments => {
+      departments.forEach(element => {
+        if(element.departmentName === this.departmentName){
+          this.router.navigate(['/desk-booking', element.id]);
+        }
+      });
+    }); 
   }
 }
