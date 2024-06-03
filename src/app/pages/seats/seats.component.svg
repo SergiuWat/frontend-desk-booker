@@ -39,7 +39,16 @@
     <rect x="2.5" y="2.5" width="940" height="551" fill="none" />
   </g>
 
-  <g class="separators">
+   
+    <g class="separators">
+      <ng-container *ngFor="let separator of separators">
+        <line 
+             [attr.x2]="separator.separatorWidth" [attr.y2]="separator.separatorHeight"
+              [attr.transform]="'translate(' + separator.translateSeparatorX + ' ' + separator.translateSeparatorY + ')'">
+        </line>
+      </ng-container>
+    </g>
+  <!-- <g class="separators">
     <line x2="82" transform="translate(10.5 106.5)" />
     <line x2="82" transform="translate(136.5 106.5)" />
     <line y2="155" transform="translate(92.5 30.5)" />
@@ -93,15 +102,41 @@
   <g class="separate-room" >
     <line x1="198" transform="translate(747.5 350.5)" />
     <line y2="202.5" transform="translate(748.5 350)" />
-  </g>
+  </g> -->
 
-  <g class="seat" id="seat-1"
+  <ng-container *ngFor="let deskPosition of deskPositions">
+    <g class="seat" [attr.id]="'seat-' + deskPosition.desk.id"
+      [class.selected]="isVisible && isSelected(deskPosition.desk.id)"
+      (click)="select(deskPosition.desk.id)" 
+      [style.fill]="isSelected(deskPosition.desk.id) ? '#4cdf0c' : (checkDeskAvailability(deskPosition.desk.id) ? 'red' : '#0cc')"
+      [style.pointer-events]="isVisible ? 'auto' : 'none'"
+      style="cursor: pointer">
+        <g [attr.id]="'table-' + deskPosition.desk.id" [attr.transform]="'translate(' + deskPosition.translateTableX + ' ' + deskPosition.translateTableY + ')'">
+          <rect width="66" height="35" stroke="none" />
+          <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
+        </g>
+
+        <g [attr.id]="'screen-' + deskPosition.desk.id" [attr.transform]="'translate(' + deskPosition.translateScreenX + ' ' + deskPosition.translateScreenY + ')'">
+          <rect id="fill" width="42" height="4" stroke="none" />
+          <path
+            d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
+            fill="none"
+            clip-path="url(#clip)"
+          />
+        </g>
+        <g [attr.id]="'chair-' + deskPosition.desk.id" [attr.transform]="'translate(' + deskPosition.translateChairX + ' ' + deskPosition.translateChairY + ')'">
+          <rect width="32.5" height="21.5" stroke="none" />
+          <rect x="2.5" y="2.5" width="27.5" height="16" fill="none" />
+        </g>
+    </g>
+  </ng-container>
+   <!-- <g class="seat" id="seat-1"
   [class.selected]="isVisible && isSelected('seat-1')"
   (click)="select('seat-1')" 
   [style.fill]="isSelected('seat-1') ? '#4cdf0c' : (checkDeskAvailability(1) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-1" transform="translate(19 59)">
+    <g id="table-1" transform="translate(19 110)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
@@ -114,9 +149,9 @@
         clip-path="url(#clip)"
       />
     </g>
-    <g id="chair-1" transform="translate(40 30)">
-      <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
-      <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
+    <g id="chair-1" transform="translate(150 34)">
+      <rect width="32.5" height="21.5" stroke="none" />
+      <rect x="2.5" y="2.5" width="27.5" height="16" fill="none" />
     </g>
   </g>
 
@@ -138,9 +173,9 @@
         clip-path="url(#clip-2)"
       />
     </g>
-    <g id="chair-2" transform="translate(169 30)">
-      <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
-      <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
+    <g id="chair-2" transform="translate(165 34)">
+      <rect width="32.5" height="21.5" stroke="none" />
+      <rect x="2.5" y="2.5" width="27.5" height="16" fill="none" />
     </g>
   </g>
 
@@ -150,11 +185,11 @@
   [style.fill]="isSelected('seat-3') ? '#4cdf0c' : (checkDeskAvailability(3) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-3" transform="translate(85 156) rotate(180)">
+    <g id="table-3" transform="translate(19 122)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-3" transform="translate(73 131) rotate(180)">
+    <g id="screen-3" transform="translate(31 131) ">
       <rect id="fill-3" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
@@ -162,9 +197,9 @@
         clip-path="url(#clip-3)"
       />
     </g>
-    <g id="chair-3" transform="translate(64 185) rotate(180)">
-      <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
-      <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
+    <g id="chair-3" transform="translate(35 160)">
+      <rect width="32.5" height="21.5" stroke="none" />
+      <rect x="2.5" y="2.5" width="27.5" height="16" fill="none" />
     </g>
   </g>
 
@@ -174,11 +209,11 @@
   [style.fill]="isSelected('seat-4') ? '#4cdf0c' : (checkDeskAvailability(4) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-4" transform="translate(214 156) rotate(180)">
+    <g id="table-4" transform="translate(148 122)">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-4" transform="translate(202 131) rotate(180)">
+    <g id="screen-4" transform="translate(160 131)">
       <rect id="fill-4" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
@@ -186,16 +221,11 @@
         clip-path="url(#clip-4)"
       />
     </g>
-    <g id="chair-4" transform="translate(193 185) rotate(180)">
-      <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
-      <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
+    <g id="chair-4" transform="translate(165 160)">
+      <rect width="32.5" height="21.5" stroke="none" />
+      <rect x="2.5" y="2.5" width="27.5" height="16" fill="none" />
     </g>
   </g>
-
-
-   
-
-  
 
   <g class="seat" id="seat-5"
   [class.selected]="isVisible && isSelected('seat-5')"
@@ -215,9 +245,9 @@
         clip-path="url(#clip-6)"
       />
     </g>
-    <g id="chair-4" transform="translate(643 30)">
-      <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
-      <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
+    <g id="chair-4" transform="translate(639 34)">
+      <rect width="32.5" height="21.5" stroke="none" />
+      <rect x="2.5" y="2.5" width="27.5" height="16" fill="none" />
     </g>
   </g>
 
@@ -229,11 +259,11 @@
   [style.fill]="isSelected('seat-6') ? '#4cdf0c' : (checkDeskAvailability(6) ? 'red' : '#0cc')"
   [style.pointer-events]="isVisible ? 'auto' : 'none'"
   style="cursor: pointer">
-    <g id="table-6" transform="translate(687 156) rotate(180)">
+    <g id="table-6" transform="translate(622 122) ">
       <rect width="66" height="35" stroke="none" />
       <rect x="2.5" y="2.5" width="61" height="30" fill="none" />
     </g>
-    <g id="screen-6" transform="translate(675 131) rotate(180)">
+    <g id="screen-6" transform="translate(634 131) ">
       <rect id="fill-8" width="42" height="4" stroke="none" />
       <path
         d="M0,1.5h42M39.5,0v4M42,2.5h-42M2.5,4v-4"
@@ -241,9 +271,9 @@
         clip-path="url(#clip-8)"
       />
     </g>
-    <g id="chair-6" transform="translate(666 185) rotate(180)">
-      <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
-      <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
+    <g id="chair-6" transform="translate(639 160)">
+      <rect width="32.5" height="21.5" stroke="none" />
+      <rect x="2.5" y="2.5" width="27.5" height="16" fill="none" />
     </g>
   </g>
 
@@ -265,13 +295,13 @@
         clip-path="url(#clip-5)"
       />
     </g>
-    <g id="chair-7" transform="translate(751 30)">
-      <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
-      <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
+    <g id="chair-7" transform="translate(747 34)">
+      <rect width="32.5" height="21.5" stroke="none" />
+      <rect x="2.5" y="2.5" width="27.5" height="16" fill="none" />
     </g>
-  </g>
+  </g> -->
 
-  <g class="seat" id="seat-8" 
+  <!-- <g class="seat" id="seat-8" 
   [class.selected]="isVisible && isSelected('seat-8')"
   (click)="select('seat-8')" 
   [style.fill]="isSelected('seat-8') ? '#4cdf0c' : (checkDeskAvailability(8) ? 'red' : '#0cc')"
@@ -726,6 +756,6 @@
       <ellipse cx="12.5" cy="11" rx="12.5" ry="11" stroke="none" />
       <ellipse cx="12.5" cy="11" rx="10" ry="8.5" fill="none" />
     </g>
-</g>
+</g> --> 
 
 </svg>
