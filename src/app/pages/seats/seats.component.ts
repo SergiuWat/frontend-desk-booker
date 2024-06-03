@@ -74,7 +74,7 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
         this.value = '';
       } else {
         this.value = option;
-        const deskId = this.extractDeskId(option);
+        const deskId = parseInt(option);
         this.openBookingDialog(deskId);
       }
       this.onChange(this.value);
@@ -144,9 +144,9 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
     window.location.reload();    
   }
 
-  private extractDeskId(option: string): number {
-    return parseInt(option.split('-')[1]);
-  }
+  // private extractDeskId(option: string): number {
+  //   return parseInt(option.split('-')[1]);
+  // }
 
   checkDeskAvailability(deskId: number): boolean {
     return this.isDeskBookedMap.get(deskId) || false;

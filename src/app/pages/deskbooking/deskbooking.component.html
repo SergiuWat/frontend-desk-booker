@@ -4,7 +4,6 @@
     </div>
 
     <div class="col order-2 mt-5">
-        <button class="btn btn-primary" (click)="goToHome()">Home</button>
         <h4>Please choose a period: </h4>
         <mat-radio-group [(ngModel)]="bookingType" (change)="resetDesks()">
             <mat-radio-button value="oneDay">Book for one day</mat-radio-button>
@@ -39,6 +38,7 @@
         </div>
     </div> 
     <div class="col order-1">
+        <button class="btn btn-primary" (click)="goToHome()">Home</button>
         <app-seats [desks]="desks" [isVisible]="isVisible"></app-seats>
     </div>
         
