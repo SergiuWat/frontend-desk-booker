@@ -19,13 +19,13 @@
   }
   
   .confirm-button {
-    background-color: #4caf50; /* Green */
-    color: white;
+    background-color: #4caf50;
+    color: white !important;
   }
   
   .cancel-button {
-    background-color: #f44336; /* Red */
-    color: white;
+    background-color: #f44336;
+    color: white !important;
   }
   
   .mat-button {

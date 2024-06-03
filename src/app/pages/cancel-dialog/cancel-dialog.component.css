@@ -1,0 +1,55 @@
+.dialog-content {
+    padding: 20px;
+    margin-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    margin-top: auto;
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.select-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.confirm-button {
+    background-color: #4caf50;
+    color: white !important;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.select-button{
+    background-color: blue;
+    color: white !important;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.cancel-button {
+    background-color: #f44336;
+    color: white !important;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.select-container {
+    margin-top: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+}

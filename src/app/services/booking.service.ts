@@ -32,12 +32,12 @@ export class BookingService {
     return this.http.get<Booking[]>(`${this.baseUrl}/getAllBookedDesksByDay?wantedstartDate=${wantedstartDate}&wantedendDate=${wantedendDate}`);
   }
 
-  addBooking(bookingData: BookingData): Observable<any>{ 
-    return this.http.post<any>(`${this.baseUrl}/addBooking`, bookingData);
+  addBooking(bookingData: BookingData): Observable<string>{ 
+    return this.http.post<string>(`${this.baseUrl}/addBooking`, bookingData, { responseType: 'text' as 'json' });
   }
 
-  cancelBooking(id: number): Observable<any>{
-    return this.http.delete<any>(`${this.baseUrl}/deleteBooking/${id}`);
+  cancelBooking(id: number): Observable<string>{
+    return this.http.delete<string>(`${this.baseUrl}/deleteBooking/${id}`, { responseType: 'text' as 'json' });
   }
 
 }
