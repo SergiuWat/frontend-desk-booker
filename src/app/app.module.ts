@@ -30,6 +30,9 @@ import { HistoryComponent } from './pages/history/history.component';
 import { SeatsComponent } from './pages/seats/seats.component';
 import { BookingdialogComponent } from './pages/bookingdialog/bookingdialog.component';
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +50,7 @@ import { BookingdialogComponent } from './pages/bookingdialog/bookingdialog.comp
     HistoryComponent,
     SeatsComponent,
     BookingdialogComponent
+
   ],
   imports: [
     BrowserModule,

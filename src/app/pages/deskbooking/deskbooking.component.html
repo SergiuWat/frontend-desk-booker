@@ -10,32 +10,36 @@
             <mat-radio-button value="oneDay">Book for one day</mat-radio-button>
             <mat-radio-button value="period">Book for a period</mat-radio-button>
         </mat-radio-group>
-    
+        
         <div *ngIf="bookingType === 'oneDay'">
             <mat-form-field>
                 <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" (dateChange)="handleSelectedDate()">
+                <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" (dateChange)="handleSelectedDate()" [matDatepickerFilter]="dateFilter">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
         </div>
-    
+
         <div *ngIf="bookingType === 'period'">
             <mat-form-field style="margin-right: 1px;">
                 <mat-label>Start Date</mat-label>
-                <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate" (dateChange)="handleStartDate()">
+                <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate" (dateChange)="handleStartDate()" [matDatepickerFilter]="dateFilter">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
                 <mat-datepicker #startPicker></mat-datepicker>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>End Date</mat-label>
-                <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate" (dateChange)="handleEndDate()">
+                <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate" (dateChange)="handleEndDate()" [matDatepickerFilter]="dateFilter">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
                 <mat-datepicker #endPicker></mat-datepicker>
             </mat-form-field>
+        </div>
+        <div class="mt-5">
+            <h4>Floor level: {{floorLevel}}</h4>
+            <h4>Department: {{deparment}}</h4>
         </div>
     </div> 
     <div class="col order-1">
