@@ -9,6 +9,8 @@ import { BookingService } from 'src/app/services/booking.service';
 import { DeskService } from 'src/app/services/desk.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { SeatsComponent } from '../seats/seats.component';
+import { HolidayService } from 'src/app/services/holiday.service';
+
 
 @Component({
   selector: 'app-deskbooking',
@@ -24,7 +26,12 @@ export class DeskbookingComponent implements OnInit {
   isVisible: boolean = false;
   desks: Desk[];
   bookingType: string = 'oneDay'; // Default to 'oneDay'
-
+  deparment: string;
+  floorLevel: string;
+  selectedRegion = 'Romania';
+  regions = ['Romania', 'Germany']; 
+  holidays: Date[] = [];
+  
   constructor(private route: ActivatedRoute,
     private datePipe: DatePipe,
     private sharedBookingData: BookingDataService,
@@ -33,11 +40,12 @@ export class DeskbookingComponent implements OnInit {
     private deskService: DeskService,
     private bookingDataService: BookingDataService,
     private employeeService: EmployeeService,
+    private holidayService: HolidayService,
     private router: Router) {
 
   }
 
-  ngOnInit(): void {
+  async ngOnInit(){
     this.route.params.subscribe(params => {
       this.departmentId = +params['id'];
     });
@@ -51,7 +59,35 @@ export class DeskbookingComponent implements OnInit {
     if (this.seatsComponent != undefined) {
       this.seatsComponent.updateSeats();
     }
+    var employeeInfo = await this.employeeService.getEmployeeInfo().toPromise();
+    this.deparment = employeeInfo.department.departmentName;
+    this.floorLevel = employeeInfo.department.floor.floorLevel.toString();
+    this.updateHolidays();
   }
+
+  updateHolidays() {
+    const currentYear = new Date().getFullYear();
+    this.holidays = this.holidayService.getHolidaysForRegion(this.selectedRegion, currentYear);
+  }
+
+  dateFilter = (date: Date | null): boolean => {
+    if (!date) {
+      return false;
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const isBeforeToday = date < today;
+    const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+    const isHoliday = this.holidays.some(
+      holiday => holiday.getDate() === date.getDate() &&
+                 holiday.getMonth() === date.getMonth() &&
+                 holiday.getFullYear() === date.getFullYear()
+    );
+
+    return !isBeforeToday && !isWeekend && !isHoliday;
+  };
 
   handleSelectedDate() {
     const currentDate = new Date();
