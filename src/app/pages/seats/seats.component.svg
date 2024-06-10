@@ -108,7 +108,7 @@
     <g class="seat" [attr.id]="'seat-' + deskPosition.desk.id"
       [class.selected]="isVisible && isSelected(deskPosition.desk.id)"
       (click)="select(deskPosition.desk.id)" 
-      [style.fill]="isSelected(deskPosition.desk.id) ? '#4cdf0c' : (checkDeskAvailability(deskPosition.desk.id) ? 'red' : '#0cc')"
+      [style.fill]="isSelected(deskPosition.desk.id) ? '#4cdf0c' : (checkDeskAvailability(deskPosition.desk.id) ? (checkIsDeskMine(deskPosition.desk.id) ? 'orange' : 'red') : '#0cc')"
       [style.pointer-events]="isVisible ? 'auto' : 'none'"
       style="cursor: pointer">
         <g [attr.id]="'table-' + deskPosition.desk.id" [attr.transform]="'translate(' + deskPosition.translateTableX + ' ' + deskPosition.translateTableY + ')'">

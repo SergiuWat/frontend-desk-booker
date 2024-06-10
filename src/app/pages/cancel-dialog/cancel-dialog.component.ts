@@ -63,6 +63,7 @@ export class CancelDialogComponent implements AfterViewInit {
 
     if (this.selectContainer) {
       this.selectContainer.nativeElement.appendChild(listContainer);
+      this.selectAll();
     } else {
       console.error('selectContainer element not found');
     }

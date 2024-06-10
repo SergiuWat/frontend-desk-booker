@@ -30,6 +30,7 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
   @Input() isVisible: boolean = false;
   @Input() desks: Desk[];
   isDeskBookedMap: Map<number, boolean> = new Map<number, boolean>();
+  isDeskMine: Map<number, boolean> = new Map<number, boolean>();
   deskPositions: DeskPositions[];
   separators: Separators[];
   departmentId: number;
@@ -54,11 +55,9 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
     });
     this.deskPositionsService.getAllDeskPositionsByDepartment(this.departmentId).subscribe(response => {
       this.deskPositions = response;
-      console.log();
     });
     this.separatorsService.getSeparatorsByDepartmentId(this.departmentId).subscribe(response => {
       this.separators = response;
-      console.log();
     });
 
   }
@@ -105,21 +104,30 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
     }
   }
 
-  resetIsDeskBookedMap() {
+  resetMaps() {
     this.isDeskBookedMap = new Map<number, boolean>();
+    this.isDeskMine = new Map<number, boolean>();
   }
   
 
   updateSeats(): void {
-    this.resetIsDeskBookedMap();
+    this.resetMaps();
     if (this.desks) {
       this.bookingService.getAllBookedDesksByDay(this.sharedBookingData.bookingData.startDate, this.sharedBookingData.bookingData.endDate).subscribe(bookings =>{
         this.desks.forEach(desk =>{
           var obj = bookings.find((booking) => (booking.deskId === desk.id && ( this.datePipe.transform(booking.startDate, 'yyyy-MM-dd') <= this.sharedBookingData.bookingData.endDate ) && ( this.datePipe.transform(booking.endDate, 'yyyy-MM-dd') >= this.sharedBookingData.bookingData.startDate ) && ( this.datePipe.transform(booking.startDate))))
           if(obj != undefined){
             this.isDeskBookedMap.set(desk.id, true) ;
+            this.employeeService.getEmployeeInfo().subscribe(response => {
+              if(bookings.find((booking) => (booking.employeeId === response.id))){
+                this.isDeskMine.set(desk.id, true);
+              } else {
+                this.isDeskMine.set(desk.id, false);
+              }
+            });
           } else {
             this.isDeskBookedMap.set(desk.id, false);
+            this.isDeskMine.set(desk.id, false);
           }
         })
         
@@ -128,7 +136,8 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
             const seatElement = document.getElementById(`seat-${desk.id}`);
             if (seatElement) {
                 const isAvailable = this.checkDeskAvailability(desk.id);
-                seatElement.style.fill = isAvailable ? 'red' : '#0cc';
+                const isMine = this.checkIsDeskMine(desk.id);
+                seatElement.style.fill = isAvailable ? (isMine? 'orange' : 'red') : '#0cc';
                 seatElement.style.pointerEvents = isAvailable ? 'none' : 'auto';
             }
         });}
@@ -150,6 +159,10 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
 
   checkDeskAvailability(deskId: number): boolean {
     return this.isDeskBookedMap.get(deskId) || false;
+  }
+
+  checkIsDeskMine(deskId: number): boolean {
+    return this.isDeskMine.get(deskId) || false;
   }
 
   public isSelected(option: string): boolean {

@@ -8,6 +8,7 @@ import { DeskService } from 'src/app/services/desk.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { CancelDialogComponent } from '../cancel-dialog/cancel-dialog.component';
 import { Router } from '@angular/router';
+import { CancelConfirmationComponent } from '../cancel-confirmation/cancel-confirmation.component';
 
 @Component({
   selector: 'app-bookings',
@@ -81,34 +82,54 @@ export class BookingsComponent implements OnInit {
     }
   }
 
+  returnDays(booking: Booking){
+    const startDate = new Date(booking.startDate);
+    const endDate = new Date(booking.endDate);
 
-  private openCancelDialog(): void {
-    let confirmedCount = 0;
-    let dialogCount = this.selectedBookings.length;
-  
-    this.selectedBookings.forEach(booking => {
-      const dialogRef = this.dialog.open(CancelDialogComponent, {
-        width: '600px',
-        height: '350px',
-        data: { booking }
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        if (result === 'confirm') {
-          confirmedCount++;
-        }
-        
-        dialogCount--;
-  
-        if (dialogCount === 0 && confirmedCount > 0) {
-          window.location.reload();
-        }
-      });
-    });
+    return this.calculateDaysBetween(startDate, endDate);
   }
+
+
+  private calculateDaysBetween(startDate: Date, endDate: Date): number {
+    const millisecondsPerDay = 1000 * 60 * 60 * 24;
+    const timeDifference = endDate.getTime() - startDate.getTime();
+    return Math.ceil(timeDifference / millisecondsPerDay) + 1;
+  }
+
+  private openCancelDialog(booking: Booking): void {
+    const startDate = new Date(booking.startDate);
+    const endDate = new Date(booking.endDate);
+
+      if(endDate.getTime() - startDate.getTime() > 0){
+        const dialogRef = this.dialog.open(CancelDialogComponent, {
+          width: '600px',
+          height: '350px',
+          data: { booking }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+          if(result === 'confirm'){
+            window.location.reload();
+          }
+      });
+      } else {
+        const dialogRef = this.dialog.open(CancelConfirmationComponent, {
+          width: '600px',
+          height: '350px',
+          data: { booking }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+          if(result === 'confirm'){
+            window.location.reload();
+          }
+      });
+      }
+      
+  };
   
-  cancelSelectedBooking() {
-    this.openCancelDialog();
+  cancelSelectedBooking(booking: Booking) {
+    this.openCancelDialog(booking);
   }
   
   goToHome(){
