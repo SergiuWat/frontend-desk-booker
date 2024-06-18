@@ -10,6 +10,7 @@ import { DeskService } from 'src/app/services/desk.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { SeatsComponent } from '../seats/seats.component';
 import { HolidayService } from 'src/app/services/holiday.service';
+import { Booking } from 'src/app/models/Booking';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class DeskbookingComponent implements OnInit {
   selectedRegion = 'Romania';
   regions = ['Romania', 'Germany']; 
   holidays: Date[] = [];
+  bookings: Booking[];
   
   constructor(private route: ActivatedRoute,
     private datePipe: DatePipe,
@@ -177,12 +179,41 @@ export class DeskbookingComponent implements OnInit {
 
 
   async addBooking(deskId: number) {
-    var response = await this.employeeService.getEmployeeInfo().toPromise()
-    this.bookingDataService.bookingData.employeeId = response.id;
-    this.bookingDataService.bookingData.deskId = deskId;
-    this.bookingService.addBooking(this.bookingDataService.bookingData).subscribe();
-    window.location.reload();
+    try {
+      const response = await this.employeeService.getEmployeeInfo().toPromise();
+      const employeeId = response.id;
+      const employeeEmail = response.email;
+  
+      this.bookingDataService.bookingData.employeeId = employeeId;
+      this.bookingDataService.bookingData.deskId = deskId;
+  
+      this.bookingService.getBookingHistoryByEmployeeEmail(employeeEmail).subscribe(bookings => {
+        this.bookings = bookings;
+        
+        const overlappingBooking = this.bookings.find(booking => {
+          const existingStartDate = new Date(booking.startDate);
+          const existingEndDate = new Date(booking.endDate);
+          const newStartDate = new Date(this.bookingDataService.bookingData.startDate);
+          const newEndDate = new Date(this.bookingDataService.bookingData.endDate);
+
+          console.log(newStartDate, newEndDate, existingStartDate, existingEndDate);
+  
+          return (newStartDate <= existingEndDate && newEndDate >= existingStartDate);
+        });
+  
+        if (overlappingBooking) {
+          this.snackBar.open('You have already a booking in this period.', 'Close', { duration: 3000 });
+        } else {
+          this.bookingService.addBooking(this.bookingDataService.bookingData).subscribe(() => {
+            //window.location.reload();
+          });
+        }
+      });
+    } catch (error) {
+      console.error('Error while adding booking:', error);
+    }
   }
+  
 
 
   updateDesks() {

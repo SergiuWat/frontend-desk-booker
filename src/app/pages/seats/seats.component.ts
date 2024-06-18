@@ -13,6 +13,8 @@ import { DeskpositionsService } from 'src/app/services/deskpositions.service';
 import { Separators } from 'src/app/models/Separators';
 import { SeparatorsService } from 'src/app/services/separators.service';
 import { ActivatedRoute, Route } from '@angular/router';
+import { Booking } from 'src/app/models/Booking';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-seats',
@@ -34,6 +36,7 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
   deskPositions: DeskPositions[];
   separators: Separators[];
   departmentId: number;
+  bookings: Booking[];
 
   constructor(private bookingService: BookingService,
               private employeeService: EmployeeService,
@@ -43,8 +46,8 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
               private deskPositionsService: DeskpositionsService,
               private separatorsService: SeparatorsService,
               private dialog: MatDialog,
-              private route: ActivatedRoute){
-
+              private route: ActivatedRoute,
+              private snackbar: MatSnackBar){
             }
 
     
@@ -145,12 +148,40 @@ export class SeatsComponent implements ControlValueAccessor, OnChanges{
     }
   }
 
-  async addBooking(deskId:number){
-    var response = await this.employeeService.getEmployeeInfo().toPromise()
-    this.bookingDataService.bookingData.employeeId=response.id;
-    this.bookingDataService.bookingData.deskId=deskId;
-    this.bookingService.addBooking(this.bookingDataService.bookingData).subscribe();
-    window.location.reload();    
+  async addBooking(deskId: number) {
+    try {
+      const response = await this.employeeService.getEmployeeInfo().toPromise();
+      const employeeId = response.id;
+      const employeeEmail = response.email;
+  
+      this.bookingDataService.bookingData.employeeId = employeeId;
+      this.bookingDataService.bookingData.deskId = deskId;
+  
+      this.bookingService.getActiveBookingsByEmployeeEmail(employeeEmail).subscribe(bookings => {
+        this.bookings = bookings;
+        
+        const overlappingBooking = this.bookings.find(booking => {
+          const existingStartDate = new Date(booking.startDate);
+          const existingEndDate = new Date(booking.endDate);
+          const newStartDate = new Date(this.bookingDataService.bookingData.startDate);
+          const newEndDate = new Date(this.bookingDataService.bookingData.endDate);
+
+          console.log(newStartDate, newEndDate, existingStartDate, existingEndDate);
+  
+          return (newStartDate <= existingEndDate && newEndDate >= existingStartDate);
+        });
+  
+        if (overlappingBooking) {
+          this.snackbar.open('You have already a booking in this period.', 'Close', { duration: 3000 });
+        } else {
+          this.bookingService.addBooking(this.bookingDataService.bookingData).subscribe(() => {
+            window.location.reload();
+          });
+        }
+      });
+    } catch (error) {
+      console.error('Error while adding booking:', error);
+    }
   }
 
   // private extractDeskId(option: string): number {

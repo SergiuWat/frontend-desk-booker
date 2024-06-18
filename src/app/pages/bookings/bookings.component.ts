@@ -9,6 +9,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 import { CancelDialogComponent } from '../cancel-dialog/cancel-dialog.component';
 import { Router } from '@angular/router';
 import { CancelConfirmationComponent } from '../cancel-confirmation/cancel-confirmation.component';
+import { HolidayService } from 'src/app/services/holiday.service';
 
 @Component({
   selector: 'app-bookings',
@@ -21,16 +22,25 @@ export class BookingsComponent implements OnInit {
   currentPage = 1;
   itemsPerPage = 5;
   totalPages: number;
+  selectedRegion = 'Romania';
+  regions = ['Romania', 'Germany']; 
+  holidays: Date[] = [];
 
   selectedBookings: Booking[] = [];
   paginatedBookings: Booking[];
 
-  constructor(private bookingService: BookingService, private employeeService: EmployeeService, private deskService: DeskService, private departmentService: DepartmentService, private dialog: MatDialog, private router: Router) {
+  constructor(private bookingService: BookingService, private employeeService: EmployeeService, private deskService: DeskService, private departmentService: DepartmentService, private holidayService: HolidayService, private dialog: MatDialog, private router: Router) {
 
   }
 
   ngOnInit(): void {
+    this.updateHolidays();
     this.loadBookings();
+  }
+
+  updateHolidays() {
+    const currentYear = new Date().getFullYear();
+    this.holidays = this.holidayService.getHolidaysForRegion(this.selectedRegion, currentYear);
   }
 
   updatePaginatedBookings() {
@@ -82,11 +92,39 @@ export class BookingsComponent implements OnInit {
     }
   }
 
+  dateFilter = (date: Date | null): boolean => {
+    if (!date) {
+      return false;
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const isBeforeToday = date < today;
+    const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+    const isHoliday = this.holidays.some(
+      holiday => holiday.getDate() === date.getDate() &&
+                 holiday.getMonth() === date.getMonth() &&
+                 holiday.getFullYear() === date.getFullYear()
+    );
+
+    return !isBeforeToday && !isWeekend && !isHoliday;
+  };
+
   returnDays(booking: Booking){
     const startDate = new Date(booking.startDate);
     const endDate = new Date(booking.endDate);
 
-    return this.calculateDaysBetween(startDate, endDate);
+    let numberOfDays = this.calculateDaysBetween(startDate, endDate);
+
+    for (let i = 0; i <= numberOfDays; i++) {
+        const currentDate = new Date(startDate);
+        currentDate.setDate(startDate.getDate() + i);
+        
+        if(currentDate.getDay() === 0 || currentDate.getDay() === 6 || !this.dateFilter(currentDate))
+          numberOfDays -= 1;
+      }
+    return numberOfDays;
   }
 
 

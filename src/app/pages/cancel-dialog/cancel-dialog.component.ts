@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Booking } from 'src/app/models/Booking';
 import { BookingData } from 'src/app/models/BookingData';
 import { BookingService } from 'src/app/services/booking.service';
+import { HolidayService } from 'src/app/services/holiday.service';
 
 @Component({
   selector: 'app-cancel-dialog',
@@ -13,11 +14,15 @@ export class CancelDialogComponent implements AfterViewInit {
   @ViewChild('selectContainer', { static: false }) selectContainer: ElementRef;
   bookingToCancel: Booking;
   selectedDates: Set<string> = new Set();
+  selectedRegion = 'Romania';
+  regions = ['Romania', 'Germany']; 
+  holidays: Date[] = [];
 
-  constructor(private bookingService: BookingService,
+  constructor(private bookingService: BookingService, private holidaysService: HolidayService,
     public dialogRef: MatDialogRef<CancelDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { booking: Booking }
   ) {
+    this.updateHolidays();
     this.bookingToCancel = data.booking;
   }
 
@@ -37,10 +42,16 @@ export class CancelDialogComponent implements AfterViewInit {
       const currentDate = new Date(bookingStartDate);
       currentDate.setDate(bookingStartDate.getDate() + i);
 
+      const isWeekendOrHoliday = currentDate.getDay() === 0 || currentDate.getDay() === 6 || !this.dateFilter(currentDate);
+
       const listItem = document.createElement('div');
       listItem.style.display = 'flex';
       listItem.style.alignItems = 'center';
       listItem.style.marginBottom = '5px';
+
+      if (isWeekendOrHoliday) {
+        listItem.style.display = 'none';
+      }
 
       const dateLabel = document.createElement('span');
       dateLabel.textContent = currentDate.toDateString();
@@ -69,6 +80,30 @@ export class CancelDialogComponent implements AfterViewInit {
     }
   }
 
+  updateHolidays() {
+    const currentYear = new Date().getFullYear();
+    this.holidays = this.holidaysService.getHolidaysForRegion(this.selectedRegion, currentYear);
+  }
+
+  dateFilter = (date: Date | null): boolean => {
+    if (!date) {
+      return false;
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const isBeforeToday = date < today;
+    const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+    const isHoliday = this.holidays.some(
+      holiday => holiday.getDate() === date.getDate() &&
+                 holiday.getMonth() === date.getMonth() &&
+                 holiday.getFullYear() === date.getFullYear()
+    );
+
+    return !isBeforeToday && !isWeekend && !isHoliday;
+  };
+
   onDateToggle(event: Event): void {
     const checkbox = event.target as HTMLInputElement;
     if (checkbox.checked) {
@@ -95,6 +130,10 @@ export class CancelDialogComponent implements AfterViewInit {
         currentDate.getUTCDate()
       );
 
+      // if (currentDateUTC.getDay() === 0 || currentDateUTC.getDay() === 6 || !this.dateFilter(currentDateUTC)) {
+      //   continue;
+      // }
+
       if (Array.from(this.selectedDates).find(day => new Date(day).getUTCDate() === currentDate.getUTCDate())) {
         if ((currentPeriodStart.getUTCDate() < currentDate.getUTCDate())) {
           const periodEndDate = new Date(currentDateUTC);
@@ -109,7 +148,6 @@ export class CancelDialogComponent implements AfterViewInit {
         currentPeriodStart.setDate(currentPeriodStart.getUTCDate() + 1);
       } else {
         if ((currentDateUTC.getUTCDate() === (bookingEndDate.getUTCDate() - 1)) && !foundSelected) {
-          console.log(currentDateUTC.getUTCDate(), bookingEndDate.getUTCDate())
           bookingEndDate.setDate(bookingEndDate.getUTCDate() - 1);
 
         }
@@ -122,10 +160,6 @@ export class CancelDialogComponent implements AfterViewInit {
         endDate: new Date(bookingEndDate)
       });
     }
-
-    console.log('New periods:', newPeriods);
-
-    
 
     this.bookingService.cancelBooking(this.bookingToCancel.id).subscribe((response: string) => {
     
