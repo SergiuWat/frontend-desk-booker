@@ -177,45 +177,6 @@ export class DeskbookingComponent implements OnInit {
 
   }
 
-
-  async addBooking(deskId: number) {
-    try {
-      const response = await this.employeeService.getEmployeeInfo().toPromise();
-      const employeeId = response.id;
-      const employeeEmail = response.email;
-  
-      this.bookingDataService.bookingData.employeeId = employeeId;
-      this.bookingDataService.bookingData.deskId = deskId;
-  
-      this.bookingService.getBookingHistoryByEmployeeEmail(employeeEmail).subscribe(bookings => {
-        this.bookings = bookings;
-        
-        const overlappingBooking = this.bookings.find(booking => {
-          const existingStartDate = new Date(booking.startDate);
-          const existingEndDate = new Date(booking.endDate);
-          const newStartDate = new Date(this.bookingDataService.bookingData.startDate);
-          const newEndDate = new Date(this.bookingDataService.bookingData.endDate);
-
-          console.log(newStartDate, newEndDate, existingStartDate, existingEndDate);
-  
-          return (newStartDate <= existingEndDate && newEndDate >= existingStartDate);
-        });
-  
-        if (overlappingBooking) {
-          this.snackBar.open('You have already a booking in this period.', 'Close', { duration: 3000 });
-        } else {
-          this.bookingService.addBooking(this.bookingDataService.bookingData).subscribe(() => {
-            //window.location.reload();
-          });
-        }
-      });
-    } catch (error) {
-      console.error('Error while adding booking:', error);
-    }
-  }
-  
-
-
   updateDesks() {
     this.deskService.getAllDesksByDepartmentId(this.departmentId).subscribe(data => {
       this.desks = data;
